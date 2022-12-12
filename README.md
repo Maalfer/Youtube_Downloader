@@ -4,7 +4,9 @@
 
 Script creado en Python para descargar vídeos de YouTube en la máxima resolución, simplemente copiando y pegando el enlace del vídeo.
 
-![youtube](youtube.png)
+<p align="center">
+  <img src="youtube.png" alt="youtube.png"/>
+</p>
 
 Tenemos disponible la versión .exe (la que viene comprimida en formato zip) y la versión .py para tener acceso al código del programa.
 
