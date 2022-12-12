@@ -1,2 +1,2 @@
 pytube
-py2exe
+pyinstaller

@@ -56,3 +56,19 @@ python Youtube_Downloader.py
 ```batch
 start Youtube_Downloader.exe
 ```
+
+----
+
+### Generar un ejecutable con:
+
+```batch
+pyinstaller --onefile -i youtube.ico  Youtube_Downloader.py
+```
+Si fuera necesario. El archivo .exe generado se encuentra alojado en la carpeta "`dist`", esta se ubica donde se encontraba el script `Youtube_Downloader.py`. Si se les da la casualidad de que se les genera un error similar a este:
+<p align="center">
+  <img src="./images-readme/error.png" alt="error.png"/>
+</p>
+
+Es debido a que el archivo `youtube.png` y el ejecutable han de ir juntos, y la imagen a de tener el mismo nombre. Para solucionarlo basta con mover el `.exe` a la misma carpeta en la que se encuentra la imagen.
+
+----
