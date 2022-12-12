@@ -58,7 +58,7 @@ def downloadPlayList(url, carpeta):
         print("[!] Usted no introducio ningun enlace o este no es valido :(")
 
 
-def accion():
+def descargarUnUnicoVideo():
     try:
         enlace = videos.get()
         video = YouTube(enlace, on_progress_callback=on_progress)
@@ -76,39 +76,103 @@ def accion():
         messagebox.showerror(
             "Error", "Usted no introducio ningun enlace o este no es valido :(")
 
+def popup():
+    messagebox.showinfo("Sobre mí", "Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")
 
 if __name__ == "__main__":
-    def popup():
-        messagebox.showinfo(
-            "Sobre mí", "Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")
 
-    root = Tk()
-    root.config(bd=15)
-    root.geometry("400x250")
-    root.resizable(False, False)
-    root.title("Script para descargar vídeos")
+    root = Tk() # instancia de ventana principal
+    root.config(bd=15) # Color de fondo
+    root.geometry("400x250")  # Establecer un tamaño a la ventana
+    #root.resizable(False, False) # no permitir que puedan redimensionar la ventana
+    root.title("programa para descargar vídeos") # titulo de la ventana
 
-    imagen = PhotoImage(file="youtube.png")
-    foto = Label(root, image=imagen, bd=0)
-    foto.grid(row=0, column=0)
-
-    menubar = Menu(root)
-    root.config(menu=menubar)
+    
+    menubar = Menu(root) # crear un menu
+    root.config(menu=menubar) # agregarle
+    
     helpmenu = Menu(menubar, tearoff=0)
-
     menubar.add_cascade(label="Para más información", menu=helpmenu)
     helpmenu.add_command(label="Información del autor", command=popup)
 
     menubar.add_command(label="Salir", command=root.destroy)
+    
+    menuHerramientas = Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Herramientas-Extras", menu=menuHerramientas)
+    menuHerramientas.add_command(label="Descargar un unico video", command=descargarUnUnicoVideo)
+    menuHerramientas.add_command(label="Descargar una playlist de videos", command=descargarUnUnicoVideo)
+    menuHerramientas.add_command(label="Descargar un unico archivo .mp3", command=descargarUnUnicoVideo)
+    menuHerramientas.add_command(label="Descargar una playlist de musica", command=descargarUnUnicoVideo)
+    
 
-    instrucciones = Label(
-        root, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
+    Frame1 = Frame() # Creamos un frame1. Este es para la parte de descargar videos uno a uno
+    Frame1.config(
+            width="300", height="200", # Cambiar tamaño del Frame 
+            bg="white",  # Cambiando color de fondo
+            bd=1,  # Cambiando grosor del borde
+            relief="sunken", # Cambiar el tipo de borde
+            cursor="tcross" # Cambiar el cursor
+        )
+    Frame2 = Frame() # Creamos un frame2. este para la parte de descargar varios videos de una playlist
+    Frame2.config(
+            width="300", height="200", # Cambiar tamaño del Frame 
+            bg="white",  # Cambiando color de fondo
+            bd=1,  # Cambiando grosor del borde
+            relief="sunken", # Cambiar el tipo de borde
+            cursor="tcross" # Cambiar el cursor
+        )
+    Frame3 = Frame() # Creamos un frame3. Este sera para descarga musica de una en una
+    Frame3.config(
+            width="300", height="200", # Cambiar tamaño del Frame 
+            bg="white",  # Cambiando color de fondo
+            bd=1,  # Cambiando grosor del borde
+            relief="sunken", # Cambiar el tipo de borde
+            cursor="tcross" # Cambiar el cursor
+        )
+    Frame4 = Frame() # Creamos un frame4. Este sera para descargar musica de una playlist
+    Frame4.config(
+            width="300", height="200", # Cambiar tamaño del Frame 
+            bg="white",  # Cambiando color de fondo
+            bd=1,  # Cambiando grosor del borde
+            relief="sunken", # Cambiar el tipo de borde
+            cursor="tcross" # Cambiar el cursor
+        )
+
+    imagen = PhotoImage(file="youtube.png") # agregar una imagen
+    foto = Label(Frame1, image=imagen, bd=0)
+    foto.grid(row=0, column=0)
+
+
+
+    instrucciones = Label(Frame1, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
     instrucciones.grid(row=0, column=1)
-
-    videos = Entry(root)
+    # texto1 = StringVar()
+    # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
+    instrucciones.config(
+                    bg="#aaaaaa",         # Color de fondo
+                    fg="black",         # Color de letras
+                    font=("Console", 10), # Tipo y tamaño de letra
+                    padx=10, pady=10    # Margene
+                    #textvariable=texto1 # texto variable
+                )  
+    
+    
+    videos = Entry(Frame1)
     videos.grid(row=1, column=1)
 
-    boton = Button(root, text="Descargar :)", command=accion, relief="groove")
+    boton = Button(Frame1, text="Descargar :)", command=descargarUnUnicoVideo, relief="groove")
     boton.grid(row=2, column=1)
+
+    f2 = Frame(width=100, height=100, background="blue")
+
+
+    Frame1.pack(
+                    fill="both", 
+                    anchor="center", # centramos el frame
+                    expand=1, # permitimos expandir el Frame
+                    side="top",
+                )
+    # Empacar el Frame ajusta todos sus elementos a la ventana raiz
+    
 
     root.mainloop()
