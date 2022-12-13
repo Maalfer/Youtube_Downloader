@@ -1,18 +1,15 @@
 from pytube import YouTube
-import os
 from tkinter import *
 from tkinter import messagebox as MessageBox
 
-print(os.getcwd())
-
 def accion():
-    enlace=videos.get()     
+    enlace = videos.get()     
     video = YouTube(enlace)  
     descarga = video.streams.get_highest_resolution()
     descarga.download()
 
 def popup():
-    MessageBox.showinfo("Sobre mí","Enlace a mi perfil de LinkedIn:\nhttps://www.linkedin.com/in/maalfer1/")
+    MessageBox.showinfo("Sobre mí","Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")
 
  
 root = Tk()
