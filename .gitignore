@@ -1,0 +1,5 @@
+# Codigo
+*.py
+
+# Ejecutables 
+*.exe
