@@ -5,6 +5,7 @@ class Frame4:
     def __init__(self,
                 VentanaPadre,                                       # aqui se especifica la ventana que llamo a este frame
                 # parametro por defecto para la clase:
+                InstanciaPadre,
                 grosor_borde=1,                                     # Grosor para el Frame por defecto
                 color_fondo="white",                                # color de fondo por defecto de la venta
                 tamano_ventana=[400, 250],                          # tamaño de la ventana por defecto [x, y]
@@ -13,6 +14,10 @@ class Frame4:
             ):
         
         self.Frame4 = Frame() # Creamos un frame4. Este sera para descargar musica de una playlist
+        self.VentanaPadre = VentanaPadre
+        VentanaPadre.FrameActual = self.Frame4
+        self.InstanciaPadre = InstanciaPadre
+        
         self.Frame4.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamaño del Frame 
@@ -28,3 +33,6 @@ class Frame4:
             expand=1, # permitimos expandir el Frame
             side="top",
         )
+    def setToFrame4(self):
+        self.VentanaPadre.FrameActual.destroy()
+        self.__init__(self.VentanaPadre, self.InstanciaPadre)

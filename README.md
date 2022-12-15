@@ -13,6 +13,56 @@ Tenemos disponible la versión .exe (la que viene comprimida en formato zip) y l
 Los vídeos de YouTube se descargarán en el mismo directorio donde se encuentra ubicado el programa.
 
 ----
+### Funcionamiento:
+
+```mermaid 
+flowchart RL
+    subgraph frame1.py
+      direction RL
+      VentanaDescargarUnVideo
+    end
+
+    subgraph frame2.py
+        direction RL    
+        DescargarPlaylistDeVideos
+    end
+
+    subgraph frame3.py
+        direction RL    
+        DescargarAudioMusica
+    end
+
+    subgraph frame4.py
+        direction RL    
+        DescargarPlaylistAudioMusica
+    end
+
+    subgraph root.py
+        direction RL    
+    end
+
+    subgraph Youtube_Downloader.py
+        direction RL
+        llamar_a_root
+    end
+
+    
+  Youtube_Downloader.py --> root.py
+  root.py --> frame1.py
+  frame1.py o--o frame2.py
+  frame2.py o--o frame3.py
+  frame3.py o--o frame4.py
+  frame4.py o--o frame1.py
+  frame2.py o--o frame4.py
+  frame3.py o--o frame1.py
+
+
+  
+  
+```
+
+
+----
 
 ### Clonar con:
 ```batch

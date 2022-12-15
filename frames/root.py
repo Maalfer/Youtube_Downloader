@@ -1,4 +1,5 @@
 from tkinter import messagebox, Tk, Menu
+from sys import platform
 
 # Cargamos los modulos donde se han configurado cada Frame:
 from frames.frame1 import Frame1
@@ -11,16 +12,18 @@ class root:
     def __init__(self,                                              # parametro por defecto para la clase
                 titulo_ventana = "programa para descargar vídeos",  # titulo por defecto de la ventana
                 color_fondo    = 15,                                # color de fondo por defecto de la venta
-                tamano_ventana = [400, 250]                         # tamaño de la ventana por defecto [x, y]
+                tamano_ventana = [500, 350]                         # tamaño de la ventana por defecto [x, y]
             ):
         
         self.root = Tk() # instancia de ventana principal
+        self.FrameActual = None
+        self.InstanciaRoot = self
         
         self.Frames = [ # instancias de los frames que contendra nuestra ventana raiz
-            Frame1(self.root),
-            Frame2(self.root),
-            Frame3(self.root),
-            Frame4(self.root)
+            Frame1(self.root, self.InstanciaRoot),
+            Frame2(self.root, self.InstanciaRoot),
+            Frame3(self.root, self.InstanciaRoot),
+            Frame4(self.root, self.InstanciaRoot)
         ]
         
         self.root.config(bd=15) # Color de fondo
@@ -39,10 +42,12 @@ class root:
 
         self.menuHerramientas = Menu(self.menu_root, tearoff=0)
         self.menu_root.add_cascade(label="Herramientas-Extras", menu=self.menuHerramientas)
-        #self.menuHerramientas.add_command(label="Descargar un unico video",         command=descargarUnUnicoVideo)
-        #self.menuHerramientas.add_command(label="Descargar una playlist de videos", command=descargarUnUnicoVideo)
-        #self.menuHerramientas.add_command(label="Descargar un unico archivo .mp3",  command=descargarUnUnicoVideo)
-        #self.menuHerramientas.add_command(label="Descargar una playlist de musica", command=descargarUnUnicoVideo)
+        self.menuHerramientas.add_command(label="Descargar un unico video",         command=self.Frames[0].setToFrame1)
+        self.menuHerramientas.add_command(label="Descargar una playlist de videos", command=self.Frames[1].setToFrame2)
+        self.menuHerramientas.add_command(label="Descargar un unico archivo .mp3",  command=self.Frames[2].setToFrame3)
+        self.menuHerramientas.add_command(label="Descargar una playlist de musica", command=self.Frames[3].setToFrame4)
         
     def Sobre_mi(self):
         messagebox.showinfo("Sobre mí", "Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")
+
+            

@@ -5,6 +5,7 @@ class Frame3:
     def __init__(self,
                 VentanaPadre,                                       # aqui se especifica la ventana que llamo a este frame
                 # parametro por defecto para la clase:
+                InstanciaPadre,
                 grosor_borde=1,                                     # Grosor para el Frame por defecto
                 color_fondo="white",                                # color de fondo por defecto de la venta
                 tamano_ventana=[400, 250],                          # tamaño de la ventana por defecto [x, y]
@@ -14,6 +15,10 @@ class Frame3:
         
         
         self.Frame3 = Frame() # Creamos un frame3. Este sera para descarga musica de una en una
+        self.VentanaPadre = VentanaPadre
+        VentanaPadre.FrameActual = self.Frame3
+        self.InstanciaPadre = InstanciaPadre
+        
         self.Frame3.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamaño del Frame 
@@ -29,3 +34,6 @@ class Frame3:
             expand=1, # permitimos expandir el Frame
             side="top",
         )
+    def setToFrame3(self):
+        self.VentanaPadre.FrameActual.destroy()
+        self.__init__(self.VentanaPadre, self.InstanciaPadre)
