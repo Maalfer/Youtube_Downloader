@@ -1,5 +1,11 @@
-from tkinter import Frame, Label, PhotoImage, Button, Entry, messagebox
-from sys import platform
+from sys import platform, version
+
+if version[0] == "3":
+    from tkinter import Frame, Label, PhotoImage, Button, Entry, messagebox
+elif version[0] == "2":
+    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+else:
+    print("Wtf que porongas paso aqui?!")
 
 from .lib_download import descargarUnUnicoVideo
 
@@ -11,7 +17,7 @@ class Frame1:
             # parametro por defecto para la clase:
             grosor_borde=1,                                     # Grosor para el Frame por defecto
             color_fondo="white",                                # color de fondo por defecto de la venta
-            tamano_ventana=[400, 250],                          # tamaño de la ventana por defecto [x, y]
+            tamano_ventana=[400, 250],                          # tamano de la ventana por defecto [x, y]
             tipo_cursor="tcross",                               # Cursor por defecto(cruz)
             tipo_borde="sunken"                                 # tipo de borde por defecto
         ):
@@ -24,7 +30,7 @@ class Frame1:
         
         self.Frame1.config(
             width=tamano_ventana[0], 
-            height=tamano_ventana[1], # Cambiar tamaño del Frame 
+            height=tamano_ventana[1], # Cambiar tamano del Frame 
             bg=color_fondo,           # Cambiando color de fondo
             bd=grosor_borde,          # Cambiando grosor del borde
             relief=tipo_borde,        # Cambiar el tipo de borde
@@ -48,14 +54,14 @@ class Frame1:
         self.foto = Label(self.Frame1, image=self.imagen, bd=0)
         self.foto.grid(row=0, column=0)
 
-        self.EqtiquetaInformacion1 = Label(self.Frame1, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
+        self.EqtiquetaInformacion1 = Label(self.Frame1, text="Programa creado en Python para \ndescargar videos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
         self.EqtiquetaInformacion1.config(
                         bg="#aaaaaa",         # Color de fondo
                         fg="black",         # Color de letras
-                        font=("Console", 10), # Tipo y tamaño de letra
+                        font=("Console", 10), # Tipo y tamano de letra
                         padx=10, pady=10    # Margene
                         #textvariable=texto1 # texto variable
                     )  

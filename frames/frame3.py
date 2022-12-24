@@ -1,5 +1,12 @@
-from tkinter import Frame
+from sys import version
 
+if version[0] == "3":
+    from tkinter import Frame
+elif version[0] == "2":
+    from Tkinter import Frame
+else:
+    print("Wtf que porongas paso aqui?!")
+    
 class Frame3:
     
     def __init__(self,

@@ -1,5 +1,11 @@
-from tkinter import messagebox, Tk, Menu
-from sys import platform
+from sys import platform, version
+
+if version[0] == "3":
+    from tkinter import messagebox, Tk, Menu
+elif version[0] == "2":
+    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+else:
+    print("Wtf que porongas paso aqui?!")
 
 # Cargamos los modulos donde se han configurado cada Frame:
 from .frame1 import Frame1
