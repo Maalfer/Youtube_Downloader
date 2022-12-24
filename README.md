@@ -122,3 +122,8 @@ Si fuera necesario. El archivo .exe generado se encuentra alojado en la carpeta 
 Es debido a que el archivo `youtube.png` y el ejecutable han de ir juntos, y la imagen a de tener el mismo nombre. Para solucionarlo basta con mover el `.exe` a la misma carpeta en la que se encuentra la imagen.
 
 ----
+### Si necesita pip2:
+```bash
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+```
