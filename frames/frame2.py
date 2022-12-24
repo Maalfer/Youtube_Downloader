@@ -1,5 +1,5 @@
 from tkinter import Frame, Label, Entry, Button, messagebox
-from lib_download import descargarPlaylistVideo
+from .lib_download import descargarPlaylistVideo
 
 class Frame2:
     

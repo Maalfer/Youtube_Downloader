@@ -1,7 +1,7 @@
 from tkinter import Frame, Label, PhotoImage, Button, Entry, messagebox
 from sys import platform
 
-from lib_download import descargarUnUnicoVideo
+from .lib_download import descargarUnUnicoVideo
 
 class Frame1:
     
