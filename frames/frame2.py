@@ -1,5 +1,12 @@
-from tkinter import Frame, Label, Entry, Button, messagebox
-from lib_download import descargarPlaylistVideo
+from .lib_download import descargarPlaylistVideo
+from sys import version
+
+if version[0] == "3":
+    from tkinter import Frame, Label, Entry, Button, messagebox
+elif version[0] == "2":
+    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+else:
+    print("Wtf que porongas paso aqui?!")
 
 class Frame2:
     
