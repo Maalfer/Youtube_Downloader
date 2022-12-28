@@ -21,12 +21,12 @@ class Frame2:
                 tipo_borde="sunken"                                 # tipo de borde por defecto
             ):
         
-        self.Frame2 = Frame() # Creamos un frame2. este para la parte de descargar varios videos de una playlist
+        self.Frame = Frame() # Creamos un Frame. este para la parte de descargar varios videos de una playlist
         self.VentanaPadre = VentanaPadre
-        VentanaPadre.FrameActual = self.Frame2
+        VentanaPadre.FrameActual = 2
         self.InstanciaPadre = InstanciaPadre
         
-        self.Frame2.config(
+        self.Frame.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamaño del Frame 
             bg=color_fondo,           # Cambiando color de fondo
@@ -35,14 +35,14 @@ class Frame2:
             cursor=tipo_cursor        # Cambiar el cursor
         )
         
-        self.Frame2.pack(
+        self.Frame.pack(
             fill="both", 
             anchor="center", # centramos el frame
             expand=1, # permitimos expandir el Frame
             side="top",
         )
 
-        """self.EqtiquetaInformacion1 = Label(self.Frame2, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
+        self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
@@ -54,16 +54,11 @@ class Frame2:
                         #textvariable=texto1 # texto variable
                     )  
         
-        self.videos = Entry(self.Frame2)
+        self.videos = Entry(self.Frame)
         self.videos.grid(row=1, column=1)
 
-        self.boton = Button(self.Frame2, text="Descargar :)", command=self.downloadPlayListVideo, relief="groove")
-        self.boton.grid(row=2, column=1)"""
-        
-    def setToFrame2(self):
-        self.VentanaPadre.FrameActual.destroy()
-        self.__init__(self.VentanaPadre, self.InstanciaPadre)
-        
+        self.boton = Button(self.Frame, text="Descargar :)", command=self.downloadPlayListVideo, relief="groove")
+        self.boton.grid(row=2, column=1)        
 
     def downloadPlayListVideo(self):
-        descargarPlaylistVideo(self.videos.get(), messagebox=messagebox, Frame=self.Frame2)
+        descargarPlaylistVideo(self.videos.get(), messagebox=messagebox, Frame=self.Frame)

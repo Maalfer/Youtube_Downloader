@@ -20,12 +20,12 @@ class Frame4:
                 tipo_borde="sunken"                                 # tipo de borde por defecto
             ):
         
-        self.Frame4 = Frame() # Creamos un frame4. Este sera para descargar musica de una playlist
+        self.Frame = Frame() # Creamos un frame4. Este sera para descargar musica de una playlist
         self.VentanaPadre = VentanaPadre
-        VentanaPadre.FrameActual = self.Frame4
+        VentanaPadre.FrameActual = 4
         self.InstanciaPadre = InstanciaPadre
         
-        self.Frame4.config(
+        self.Frame.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamaño del Frame 
             bg=color_fondo,           # Cambiando color de fondo
@@ -34,12 +34,9 @@ class Frame4:
             cursor=tipo_cursor        # Cambiar el cursor
         )
         
-        self.Frame4.pack(
+        self.Frame.pack(
             fill="both", 
             anchor="center", # centramos el frame
             expand=1, # permitimos expandir el Frame
             side="top",
         )
-    def setToFrame4(self):
-        self.VentanaPadre.FrameActual.destroy()
-        self.__init__(self.VentanaPadre, self.InstanciaPadre)

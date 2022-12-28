@@ -22,13 +22,12 @@ class Frame1:
             tipo_borde="sunken"                                 # tipo de borde por defecto
         ):
         
-        self.Frame1 = Frame() # Creamos un frame1. Este es para la parte de descargar videos uno a uno
+        self.Frame = Frame() # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         self.VentanaPadre = VentanaPadre
-        VentanaPadre.FrameActual = self.Frame1
+        VentanaPadre.FrameActual = 1
         self.InstanciaPadre = InstanciaPadre
-        self.InstanciaPadre.FrameActual = self.Frame1
-        
-        self.Frame1.config(
+    
+        self.Frame.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamano del Frame 
             bg=color_fondo,           # Cambiando color de fondo
@@ -37,7 +36,7 @@ class Frame1:
             cursor=tipo_cursor        # Cambiar el cursor
         )
         
-        self.Frame1.pack(
+        self.Frame.pack(
             fill="both", 
             anchor="center", # centramos el frame
             expand=1, # permitimos expandir el Frame
@@ -51,10 +50,10 @@ class Frame1:
             command=self.click_imagen
         )"""
         
-        self.foto = Label(self.Frame1, image=self.imagen, bd=0)
+        self.foto = Label(self.Frame, image=self.imagen, bd=0)
         self.foto.grid(row=0, column=0)
 
-        self.EqtiquetaInformacion1 = Label(self.Frame1, text="Programa creado en Python para \ndescargar videos de Youtube\n")
+        self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar videos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
@@ -67,24 +66,19 @@ class Frame1:
                     )  
         
 
-        self.EqtiquetaInformacion2 = Label(self.Frame1, text="Url del video -> ")
+        self.EqtiquetaInformacion2 = Label(self.Frame, text="Url del video -> ")
         self.EqtiquetaInformacion2.grid(row=1, column=0)
-        self.videos = Entry(self.Frame1)
+        self.videos = Entry(self.Frame)
         self.videos.grid(row=1, column=1)
 
-        self.EqtiquetaInformacion3 = Label(self.Frame1, text="Carpeta donde ingresar el archivo -> ")
+        self.EqtiquetaInformacion3 = Label(self.Frame, text="Carpeta donde ingresar el archivo -> ")
         self.EqtiquetaInformacion3.grid(row=2, column=0)
-        self.carpeta = Entry(self.Frame1)
+        self.carpeta = Entry(self.Frame)
         self.carpeta.grid(row=2, column=1)
 
-        self.boton = Button(self.Frame1, text="Descargar :)", command=self.downloadVideo, relief="groove")
+        self.boton = Button(self.Frame, text="Descargar :)", command=self.downloadVideo, relief="groove")
         self.boton.grid(row=3, column=1)
         
-    def setToFrame1(self):
-        self.InstanciaPadre.FrameActual.destroy()
-        self.InstanciaPadre.Frames[0] = Frame1(self.InstanciaPadre, self.InstanciaPadre)
-        self.InstanciaPadre.FrameActual = self.InstanciaPadre.Frames[0].Frame1
-        self.__init__(self.VentanaPadre, self.InstanciaPadre)
     def CarpetaActual(self):
         if platform == "Win32":
             return ".\\"
