@@ -21,8 +21,8 @@ class Frame2:
                 tipo_borde="sunken"                                 # tipo de borde por defecto
             ):
         
-        self.Frame = Frame() # Creamos un Frame. este para la parte de descargar varios videos de una playlist
         self.VentanaPadre = VentanaPadre
+        self.Frame = Frame(self.VentanaPadre)
         VentanaPadre.FrameActual = 2
         self.InstanciaPadre = InstanciaPadre
         

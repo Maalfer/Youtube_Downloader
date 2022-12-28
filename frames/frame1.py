@@ -1,13 +1,14 @@
 from sys import platform, version
 
 if version[0] == "3":
-    from tkinter import Frame, Label, PhotoImage, Button, Entry, messagebox
+    from tkinter import Frame, Label, Button, Entry, messagebox
 elif version[0] == "2":
-    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+    from Tkinter import (Frame, Label, Button, Entry, messagebox)
 else:
     print("Wtf que porongas paso aqui?!")
 
 from .lib_download import descargarUnUnicoVideo
+from .imagenes import Imagenes
 
 class Frame1:
     
@@ -22,8 +23,8 @@ class Frame1:
             tipo_borde="sunken"                                 # tipo de borde por defecto
         ):
         
-        self.Frame = Frame() # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         self.VentanaPadre = VentanaPadre
+        self.Frame = Frame(self.VentanaPadre) # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         VentanaPadre.FrameActual = 1
         self.InstanciaPadre = InstanciaPadre
     
@@ -43,15 +44,15 @@ class Frame1:
             side="top",
         )
         
-        self.imagen = PhotoImage(file="youtube.png") # agregar una imagen
+        self.imagenes = Imagenes() # hacemos una instancia a la clase imagenes
         """self.botonImagen = Button(
             self.VentanaPadre,
             image=self.imagen,
             command=self.click_imagen
         )"""
         
-        self.foto = Label(self.Frame, image=self.imagen, bd=0)
-        self.foto.grid(row=0, column=0)
+        foto = self.imagenes.addImagenes(self.imagenes.youtubePNG, self.Frame)
+        foto.grid(row=0, column=0)
 
         self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar videos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
