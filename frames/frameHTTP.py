@@ -134,14 +134,18 @@ class Frame7:
         )
 
         instancia = _serverHTTP.InitServidor() # ejecutamos una instancia del servidor y la guardamos
-        print("ip&port({}), ruta({}), instancia({})".format(_serverHTTP.port, _serverHTTP.dir, instancia))
+        print("ip&port({}), ruta({}), instancia({}), numero de instancias({})".format(_serverHTTP.getPortAndHost(), _serverHTTP.dir, instancia,len(self.serviciosHTTP)))
         self.serviciosHTTP.append(_serverHTTP)
         print(self.serviciosHTTP)
         
-    
+    #[{0: <Hilo(Servidor HTTP(0), started daemon 140225984587456)>}]
+    #[{0: <Hilo(Servidor HTTP(0), started daemon 140225975146176)>}]
+
     def killThisWindows(self):
+        print(self.serviciosHTTP)
         for instancia in self.serviciosHTTP:
-            for servicio in instancia.InstanciasDelServidor[0]:
+            print( instancia.InstanciasDelServidor)
+            for servicio in instancia.InstanciasDelServidor:
                 # Estos servicios HTTP son multiservicios, es decir pueden ejecutar mas de una instancia de ellos mismos
                 # que hay que matar.
                 for hilo in servicio.keys():
