@@ -86,11 +86,11 @@ class root:
                 print(self.VentanasAbiertas)        
             elif self.killAll == True: # si la variable estado killAll esta activada, matamos todas las ventanas
                 for ventana in self.VentanasAbiertas[ventanas]: # obtenemos las instancias Tk()
-                    #try:
-                    ventana.destroy() # matamos cada ventana
-                    #except TclError:
-                    print(type(ventana))
-                    print(self.VentanasAbiertas)
+                    try:
+                        if str(type(ventana)) != "<class 'int'>":
+                            ventana.destroy() # matamos cada ventana
+                    except TclError:
+                        print("Esta ventana ya fue destruida")
             print(ventanas)
             print(self.VentanasAbiertas[ventanas])
             

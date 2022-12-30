@@ -59,12 +59,12 @@ class Frame1:
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
         self.EqtiquetaInformacion1.config(
-                        bg="#aaaaaa",         # Color de fondo
-                        fg="black",         # Color de letras
-                        font=("Console", 10), # Tipo y tamano de letra
-                        padx=10, pady=10    # Margene
-                        #textvariable=texto1 # texto variable
-                    )  
+            bg="#aaaaaa",         # Color de fondo
+            fg="black",         # Color de letras
+            font=("Console", 10), # Tipo y tamano de letra
+            padx=10, pady=10    # Margene
+            #textvariable=texto1 # texto variable
+        )  
         
 
         self.EqtiquetaInformacion2 = Label(self.Frame, text="Url del video -> ")

@@ -2,6 +2,7 @@ from sys import version
 from threading import Thread, RLock, _active
 from time import sleep
 from ctypes import pythonapi,  py_object
+from os import chdir
 
 if version[0] == "3":
     from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHandler
@@ -16,10 +17,12 @@ class serverHTTP:
             self,
             host="127.0.0.1",
             port=8000,
+            _dir=".",
             protocolo= "HTTP/1.0",
             HandlerClass=SimpleHTTPRequestHandler,
             ServerClass=HTTPServer
         ):
+        self.dir = _dir
         self.port = port
         self.host = host
         self.HandlerClass = HandlerClass
@@ -59,6 +62,7 @@ class serverHTTP:
                 """ 
                 sleep(0.1) # esperamos 0.1s
                 server_address = (self.clasePadre.host, self.clasePadre.port)
+                chdir(self.clasePadre.dir)
                 print("server iniciado en: ({})".format(self.clasePadre.getPortAndHost()))
                 self.clasePadre.HandlerClass.protocol_version = self.clasePadre.protocolo
 
