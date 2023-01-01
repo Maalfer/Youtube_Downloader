@@ -79,7 +79,11 @@ class root:
         self.menuIdiomas.add_command(label=self.idiomas.en_US, command=self.setIdiomaToen_US)
         self.menuIdiomas.add_command(label=self.idiomas.zh_CN, command=self.setIdiomaTozh_CN)
         self.menuIdiomas.add_command(label=self.idiomas.ru_RU, command=self.setIdiomaToru_RU)
-
+        self.menuIdiomas.add_command(label=self.idiomas.fr_FR, command=self.setIdiomaTofr_FR)
+        self.menuIdiomas.add_command(label=self.idiomas.ar_EG, command=self.setIdiomaToar_EG)
+        self.menuIdiomas.add_command(label=self.idiomas.ja_JP, command=self.setIdiomaToja_JP)
+        self.menuIdiomas.add_command(label=self.idiomas.de_DE, command=self.setIdiomaTode_DE)
+        self.menuIdiomas.add_command(label=self.idiomas.esperanto, command=self.setIdiomaToesperanto)
         self.menu_root.add_command(label="Salir", command=self.killAllWindows)
 
     # Estas funciones se usan para cambiar el idioma
@@ -87,7 +91,11 @@ class root:
     def setIdiomaToen_US(self): return self.idiomas.setIdioma(self.idiomas.en_US)
     def setIdiomaTozh_CN(self): return self.idiomas.setIdioma(self.idiomas.zh_CN)
     def setIdiomaToru_RU(self): return self.idiomas.setIdioma(self.idiomas.ru_RU)
-    
+    def setIdiomaTofr_FR(self): return self.idiomas.setIdioma(self.idiomas.fr_FR)
+    def setIdiomaToar_EG(self): return self.idiomas.setIdioma(self.idiomas.ar_EG)
+    def setIdiomaToja_JP(self): return self.idiomas.setIdioma(self.idiomas.ja_JP)
+    def setIdiomaTode_DE(self): return self.idiomas.setIdioma(self.idiomas.de_DE)   
+    def setIdiomaToesperanto(self): return self.idiomas.setIdioma(self.idiomas.esperanto)   
     
     # Estas funciones matan ventanas
     def killAllWindows(self):
