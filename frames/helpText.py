@@ -1,17 +1,33 @@
 from os.path import exists
 from sys import platform
 
-from .error import UnknownOS
+from .error import UnknownOS, NotFoundThisFile, NotExistsThisLenguaje
 
 class Textos():
     
-    def __init__(self, file="helpText.txt", carpeta="data"):
+    def __init__(self, idiomas, file="helpText.txt", carpeta="data"):
         
         # Abrimos el archivo en modo lectura
+        self.idioma = idiomas.idioma
         self.carpeta = carpeta
-        self.file = open(self.getFileRuta(__file__, file), "r")
-        self.text = self.file.read()
-        self.file.close()
+        
+        # Añadimos al nombre base helpText.txt, el idioma escogido helpText-es_ES.txt por ejemplo:
+        file = file.split(".")
+        file[0] = file[0]+"-"+self.idioma
+        file = ".".join(file)
+        try:
+            self.file = open(self.getFileRuta(__file__, file), "r")
+            self.text = self.file.read()
+            self.file.close()
+        except FileNotFoundError:
+            if (idiomas.idioma in idiomas.ALL_LENGUAJE) == False:
+                # No existe este idioma en la lista de idiomas
+                raise NotExistsThisLenguaje(self.idioma) # Esto de aqui no tiene mucho sentido xd
+            else:    
+                # Si el idioma esta en la lista, quiere decir que no existe un archivo con la doc en el idioma escogido
+                error = NotFoundThisFile(file)
+                print(error.msg)
+                raise NotFoundThisFile(file)
         
     def getFileRuta(self, ruta, archivo):
         """_summary_

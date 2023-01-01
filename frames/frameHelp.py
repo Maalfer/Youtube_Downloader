@@ -29,7 +29,7 @@ class Frame5:
         self.Frame.resizable(False,False)  
         
         try:
-            self.TextHelp = Textos()
+            self.TextHelp = Textos(self.InstanciaPadre.idiomas)
         except UnknownOS:
             error = UnknownOS(platform)
             messagebox.showerror("Error", error.msg)
@@ -39,7 +39,7 @@ class Frame5:
         y = int((self.Frame.winfo_screenheight()/2) - (tamano_ventana[1]/2))
         self.Frame.geometry('{}x{}+{}+{}'.format(tamano_ventana[0], tamano_ventana[1], x, y))  # Establecer un tamano a la ventana
         
-        self.Frame.title("Ventana de ayuda") # titulo de la ventana
+        self.Frame.title("Ventana de ayuda. Idioma:{}".format(self.InstanciaPadre.idiomas.idioma)) # titulo de la ventana
         self.Frame.config(bd=color_fondo) # Color de fondo
         
         self.menu_frame = Menu(self.Frame) # crear un menu donde poner pestanas

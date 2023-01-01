@@ -38,14 +38,16 @@ class Idiomas:
         print(self.idioma)
         
         if self.es_ES == self.idioma: # Español
-            self.TextPortError = "El puerto introducido no se encuentra en el rango 1 - 2**16"
-            self.TextHostError = "Este no es un host valido, introduzca 'localhost' o una direcion IPv4 valida"
-            self.TextDirErrorNotFoundOrNotExists = "Este directorio no existe o no se pudo encontrar"
+            self.TextPortError = "El puerto introducido no se encuentra en el rango 1 - 2**16."
+            self.TextHostError = "Este no es un host valido, introduzca 'localhost' o una direcion IPv4 valida."
+            self.TextDirErrorNotFoundOrNotExists = "Este directorio no existe o no se pudo encontrar."
             self.TextThisNotDir = "Lo introducido no es un directorio, es un archivo posiblemente."
             self.TextUrlNotFound = "Usted no introducio ningun enlace o este no es valido :("
-            self.TextUnknownError = "Ocurrio un error desconocido"
-            self.TextErrorDeConexion = "No se pudo conectar a internet"
-            self.TextUnknownOS = "No se pudo identificar el OS en el que se esta trabajando"
+            self.TextUnknownError = "Ocurrio un error desconocido."
+            self.TextErrorDeConexion = "No se pudo conectar a internet."
+            self.TextUnknownOS = "No se pudo identificar el OS en el que se esta trabajando."
+            self.TextNotFoundThisFile = "Este idioma no tiene un archivo de ayuda disponible."
+            self.TextNotExistsThisLenguaje = "Este idioma no esta registrado en la lista."
             
         elif self.en_US == self.idioma: # Ingles
             self.TextPortError = "The entered port is not in the range 1 - 2**16"
@@ -56,6 +58,8 @@ class Idiomas:
             self.TextUnknownError = "An unknown error occurred"
             self.TextErrorDeConexion = "Could not connect to the internet"
             self.TextUnknownOS = "Could not identify the OS being worked on"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.zh_CN == self.idioma: # Chino
             self.TextPortError = "输入的端口不在 1 - 2**16 范围内"
@@ -66,6 +70,8 @@ class Idiomas:
             self.TextUnknownError = "出现未知错误"
             self.TextErrorDeConexion = "无法连接到互联网"
             self.TextUnknownOS = "无法识别正在使用的操作系统"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.ru_RU == self.idioma: # Ruso 
             self.TextPortError = "Введенный порт не находится в диапазоне 1–2**16"
@@ -76,6 +82,8 @@ class Idiomas:
             self.TextUnknownError = "Произошла неизвестная ошибка"
             self.TextErrorDeConexion = "Не удалось подключиться к Интернету"
             self.TextUnknownOS = "Не удалось определить ОС, над которой ведется работа"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.fr_FR == self.idioma: # Frances(Francia)
             self.TextPortError = "Le port saisi n'est pas dans la plage 1 - 2**16"
@@ -86,6 +94,8 @@ class Idiomas:
             self.TextUnknownError = "Une erreur inconnue est survenue"
             self.TextErrorDeConexion = "Impossible de se connecter à Internet"
             self.TextUnknownOS = "Impossible d'identifier le système d'exploitation sur lequel on travaille"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.ar_EG == self.idioma: # Arabe Egipto(el mas similar al estandar)
             self.TextPortError = "المنفذ الذي تم إدخاله ليس في النطاق 1 - 2 ** 16"
@@ -96,6 +106,8 @@ class Idiomas:
             self.TextUnknownError = "حدث خطأ غير معروف"
             self.TextErrorDeConexion = "تعذر الاتصال بالإنترنت"
             self.TextUnknownOS = "تعذر تحديد نظام التشغيل قيد العمل"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.ja_JP == self.idioma: # Japones
             self.TextPortError = "入力されたポートは 1 から 2**16 の範囲にありません"
@@ -106,6 +118,8 @@ class Idiomas:
             self.TextUnknownError = "不明なエラーが発生しました"
             self.TextErrorDeConexion = "インターネットに接続できませんでした"
             self.TextUnknownOS = "動作しているOSを特定できませんでした"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.de_DE == self.idioma: # Aleman(Alemania)
             self.TextPortError = "Der eingegebene Port liegt nicht im Bereich 1 - 2**16"
@@ -116,6 +130,8 @@ class Idiomas:
             self.TextUnknownError = "Ein unbekannter Fehler ist aufgetreten"
             self.TextErrorDeConexion = "Es konnte keine Verbindung zum Internet hergestellt werden"
             self.TextUnknownOS = "Das Betriebssystem, an dem gearbeitet wird, konnte nicht identifiziert werden"
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
             
         elif self.esperanto == self.idioma: # esperanto
             self.TextPortError = "La enigita haveno ne estas en la intervalo 1 - 2**16"
@@ -126,10 +142,9 @@ class Idiomas:
             self.TextUnknownError = "Nekonata eraro okazis"
             self.TextErrorDeConexion = "Ne eblis konekti al la interreto"
             self.TextUnknownOS = "Ne eblis identigi la OS prilaborata"
-
-        
-        
-        
+            self.TextNotFoundThisFile = ""
+            self.TextNotExistsThisLenguaje = ""
+            
         else:
             raise Exception("Este idioma no se encuentra {}".format(self.idioma))
             
