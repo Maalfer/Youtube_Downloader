@@ -20,8 +20,8 @@ class Frame4:
                 tipo_borde="sunken"                                 # tipo de borde por defecto
             ):
         
-        self.Frame = Frame() # Creamos un frame4. Este sera para descargar musica de una playlist
         self.VentanaPadre = VentanaPadre
+        self.Frame = Frame(self.VentanaPadre) # Creamos un frame4. Este sera para descargar musica de una playlist
         VentanaPadre.FrameActual = 4
         self.InstanciaPadre = InstanciaPadre
         

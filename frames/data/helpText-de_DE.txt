@@ -1,0 +1,27 @@
+Hallo Benutzer, willkommen zu diesem Programm. Mit dieser Software können Sie YouTube-Inhalte einzeln oder als Wiedergabeliste herunterladen.
+
+
+Im Abschnitt "Sprachen" können wir die Sprache des Programms auswählen. wir können folgendes platzieren:
++ es_ES = Spanisch
++ en_US = Englisch
++zh_CN = Chinesisch
++ ru_RU = Russisch
++ fr_FR = Französisch (Frankreich)
++ ar_EG = Arabisches Ägypten (dem Standard am ähnlichsten)
++ ja_JP = Japanisch
++ de_DE = Deutsch (Deutschland)
++ Esperanto = Esperanto
+
+Im Abschnitt „Beenden“ können Sie alle Programmfenster schließen.
+
+Im Abschnitt „Weitere Informationen“ finden wir Folgendes:
+     + „Author Information“: Dies gibt den ursprünglichen Ersteller der Software an.
+     + "Informationen der Mitwirkenden": In diesem Abschnitt finden wir Informationen über die Personen, die an dem Projekt mitgearbeitet haben.
+     + "Hilfe": Wir können Informationen über die Bedienung des Programms finden.
+     + „Über diese Software“: Gibt uns allgemeine Informationen über die Software.
+
+Im Abschnitt "Tools-Extras" finden wir Folgendes:
+     + „Ein einzelnes Video herunterladen“: Ermöglicht uns, ein Video von einer YouTube-URL herunterzuladen und in einem Systemordner zu speichern.
+     + "Laden Sie eine Wiedergabeliste mit Videos herunter": Ermöglicht uns, Videos von einer YouTube-Wiedergabeliste im Videoformat herunterzuladen.
+     + „Eine einzelne .mp3-Datei herunterladen“: Ermöglicht uns, Musik im mp3-Format von YouTube herunterzuladen, indem wir eine URL angeben.
+     + „Herunterladen einer Musik-Wiedergabeliste“: Ermöglicht uns, eine YouTube-Wiedergabeliste im MP3-Format herunterzuladen.

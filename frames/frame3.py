@@ -21,8 +21,8 @@ class Frame3:
             ):
         
         
-        self.Frame = Frame() # Creamos un frame3. Este sera para descarga musica de una en una
         self.VentanaPadre = VentanaPadre
+        self.Frame = Frame(self.VentanaPadre) # Creamos un frame3. Este sera para descarga musica de una en una
         VentanaPadre.FrameActual = 3
         self.InstanciaPadre = InstanciaPadre
         

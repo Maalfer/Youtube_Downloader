@@ -1,0 +1,27 @@
+Saluton uzanto, bonvenon al ĉi tiu programo. Ĉi tiu programaro ebligas al vi elŝuti jutuban enhavon individue aŭ kiel ludlisto.
+
+
+En la sekcio "lingvoj", ni povas elekti la lingvon de la programo. ni povas meti la jenajn:
++ es_ES = Hispana
++ eo_US = angla
++zh_CN = Ĉina
++ ru_RU = Rusa
++ fr_FR = franca (Francio)
++ ar_EG = araba Egiptio (la plej simila al la normo)
++ ja_JP = Japana
++ de_DE = Germana (Germanio)
++ Esperanto = Esperanto
+
+En la sekcio "Eliro" vi povas fermi ĉiujn programfenestrojn.
+
+En la sekcio "Por pliaj informoj" ni povas trovi la jenajn:
+     + "Informoj pri Aŭtoro": Ĉi tio specifas la originan kreinton de la programaro.
+     + "Informoj de kontribuantoj": En ĉi tiu sekcio ni trovas informojn pri la homoj, kiuj kunlaboris en la projekto.
+     + "Helpo": Ni povas trovi informojn pri la funkciado de la programo.
+     + "Pri ĉi tiu programaro": Donas al ni ĝeneralajn informojn pri la programaro.
+
+En la sekcio "Iloj-Kromaĵoj" ni povas trovi la jenajn:
+     + "Elŝutu ununuran videon": Permesas al ni elŝuti videon el jutuba url kaj konservi ĝin en sistema dosierujo.
+     + "Elŝutu ludliston de videoj": Ĝi ebligas al ni elŝuti filmetojn el jutuba ludlisto en videoformato.
+     + "Elŝutu ununuran .mp3-dosieron": Permesas al ni elŝuti muzikon en mp3-formato el Jutubo provizante url-on.
+     + "Elŝutu muzikliston": Ĝi ebligas al ni elŝuti jutuban ludliston en mp3-formato.

@@ -1,0 +1,27 @@
+Bonjour utilisateur, bienvenue dans ce programme. Ce logiciel vous permet de télécharger du contenu YouTube individuellement ou sous forme de liste de lecture.
+
+
+Dans la section "langues", nous pouvons sélectionner la langue du programme. nous pouvons placer les éléments suivants :
++ es_ES = espagnol
++ en_US = anglais
++ zh_CN = chinois
++ ru_RU = russe
++ fr_FR = Français(France)
++ ar_EG = Arabe Égypte (le plus proche de la norme)
++ ja_JP = japonais
++ de_DE = allemand (Allemagne)
++ Espéranto = Espéranto
+
+Dans la section "Quitter", vous pouvez fermer toutes les fenêtres du programme.
+
+Dans la section "Pour plus d'informations", nous pouvons trouver les éléments suivants :
+     + "Informations sur l'auteur": Ceci spécifie le créateur original du logiciel.
+     + "Informations des contributeurs": Dans cette section, nous trouvons des informations sur les personnes qui ont collaboré au projet.
+     + "Aide": Nous pouvons trouver des informations sur le fonctionnement du programme.
+     + "A propos de ce logiciel" : donne des informations générales sur le logiciel.
+
+Dans la section "Outils-Extras", nous pouvons trouver les éléments suivants :
+     + "Télécharger une seule vidéo": Permet de télécharger une vidéo à partir d'une URL YouTube et de l'enregistrer dans un dossier système.
+     + "Télécharger une playlist de vidéos": Il nous permet de télécharger des vidéos à partir d'une playlist YouTube au format vidéo.
+     + "Télécharger un seul fichier .mp3": Permet de télécharger de la musique au format mp3 à partir de YouTube en fournissant une URL.
+     + "Télécharger une playlist musicale": Il nous permet de télécharger une playlist YouTube au format mp3.

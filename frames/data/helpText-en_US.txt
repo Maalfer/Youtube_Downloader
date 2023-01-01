@@ -1,0 +1,27 @@
+Hello user, welcome to this program. This software allows you to download YouTube content individually or as a playlist.
+
+
+In the "languages" section, we can select the language of the program. we can place the following:
++ es_ES = Spanish
++ en_US = English
++ zh_CN = Chinese
++ ru_RU = Russian
++ fr_FR = French(France)
++ ar_EG = Arabic Egypt (the most similar to the standard)
++ ja_JP = Japanese
++ de_DE = German(Germany)
++ Esperanto = Esperanto
+
+In the "Exit" section you can close all the program windows.
+
+In the "For more information" section we can find the following:
+     + "Author Information": This specifies the original creator of the software.
+     + "Information of contributors": In this section we find information about the people who collaborated in the project.
+     + "Help": We can find information about the operation of the program.
+     + "About this software": Gives us general information about the software.
+
+In the "Tools-Extras" section we can find the following:
+     + "Download a single video": Allows us to download a video from a YouTube url and save it in a system folder.
+     + "Download a playlist of videos": It allows us to download videos from a YouTube playlist in video format.
+     + "Download a single .mp3 file": Allows us to download music in mp3 format from YouTube by providing a url.
+     + "Download a music playlist": It allows us to download a YouTube playlist in mp3 format.

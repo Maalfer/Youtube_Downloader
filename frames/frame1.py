@@ -1,13 +1,15 @@
 from sys import platform, version
 
 if version[0] == "3":
-    from tkinter import Frame, Label, PhotoImage, Button, Entry, messagebox
+    from tkinter import Frame, Label, Button, Entry, messagebox
 elif version[0] == "2":
-    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+    from Tkinter import (Frame, Label, Button, Entry, messagebox)
 else:
     print("Wtf que porongas paso aqui?!")
 
 from .lib_download import descargarUnUnicoVideo
+from .imagenes import Imagenes
+from .error import UrlNotFound, UnknownError, ErrorDeConexion
 
 class Frame1:
     
@@ -22,8 +24,8 @@ class Frame1:
             tipo_borde="sunken"                                 # tipo de borde por defecto
         ):
         
-        self.Frame = Frame() # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         self.VentanaPadre = VentanaPadre
+        self.Frame = Frame(self.VentanaPadre) # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         VentanaPadre.FrameActual = 1
         self.InstanciaPadre = InstanciaPadre
     
@@ -43,27 +45,27 @@ class Frame1:
             side="top",
         )
         
-        self.imagen = PhotoImage(file="youtube.png") # agregar una imagen
+        self.imagenes = Imagenes() # hacemos una instancia a la clase imagenes
         """self.botonImagen = Button(
             self.VentanaPadre,
             image=self.imagen,
             command=self.click_imagen
         )"""
         
-        self.foto = Label(self.Frame, image=self.imagen, bd=0)
-        self.foto.grid(row=0, column=0)
+        foto = self.imagenes.addImagenes(self.imagenes.youtubePNG, self.Frame)
+        foto.grid(row=0, column=0)
 
         self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar videos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
         self.EqtiquetaInformacion1.config(
-                        bg="#aaaaaa",         # Color de fondo
-                        fg="black",         # Color de letras
-                        font=("Console", 10), # Tipo y tamano de letra
-                        padx=10, pady=10    # Margene
-                        #textvariable=texto1 # texto variable
-                    )  
+            bg="#aaaaaa",         # Color de fondo
+            fg="black",         # Color de letras
+            font=("Console", 10), # Tipo y tamano de letra
+            padx=10, pady=10    # Margene
+            #textvariable=texto1 # texto variable
+        )  
         
 
         self.EqtiquetaInformacion2 = Label(self.Frame, text="Url del video -> ")
@@ -88,7 +90,25 @@ class Frame1:
         carpeta = self.carpeta.get()
         if len(carpeta) == 0:
             carpeta = self.CarpetaActual()
-        descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+            
+        error = None
+        try:
+            try:
+                try:
+                    descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+                except ErrorDeConexion:
+                    # No se puede conectar a internet
+                    error = ErrorDeConexion(idioma=self.InstanciaPadre.idiomas)
+            except UnknownError:
+                # Ocurrio un error desconocido
+                error = UnknownError(idioma=self.InstanciaPadre.idiomas)
+        except UrlNotFound:
+            # Esta url no existe o no se encuentra
+            error = UrlNotFound(self.videos.get(), idioma=self.InstanciaPadre.idiomas)
+            
+        if error != None:
+            # Si ocurrio algun error de algun tipo mostrar una ventana con la informacion:
+            messagebox.showerror("Error", error.msg)
     
     """def click_imagen(self):
         messagebox.INFO("Este programa aun esta en desarollo.")"""
