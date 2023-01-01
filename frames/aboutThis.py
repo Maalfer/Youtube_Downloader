@@ -1,9 +1,9 @@
 from sys import version
 
 if version[0] == "3":
-    from tkinter import Tk, Menu, PhotoImage, Label, Frame
+    from tkinter import Toplevel, Menu, PhotoImage, Label, Frame
 elif version[0] == "2":
-    from Tkinter import (Tk, Menu,PhotoImage, Label, Frame)
+    from Tkinter import (Toplevel, Menu,PhotoImage, Label, Frame)
 else:
     print("Wtf que porongas paso aqui?!")
     
@@ -19,8 +19,9 @@ class Frame6:
                 tamano_ventana=[400, 250],                          # tamaño de la ventana por defecto [x, y]
             ):
         
+        # creamos una ventana nueva:
+        self.Frame = Toplevel()
         
-        self.Frame = Tk()
         self.Frame.resizable(False,False)  
         self.VentanaPadre = VentanaPadre
         self.InstanciaPadre = InstanciaPadre

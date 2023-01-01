@@ -3,9 +3,9 @@ from os import chdir, getcwd
 from os.path import exists, isfile
 
 if version[0] == "3":
-    from tkinter import Tk, Menu, Entry, Label, Frame, Button, messagebox
+    from tkinter import Toplevel, Menu, Entry, Label, Frame, Button, messagebox
 elif version[0] == "2":
-    from Tkinter import (Tk, Menu, Entry, Label, Frame, Button, messagebox)
+    from Tkinter import (Toplevel, Menu, Entry, Label, Frame, Button, messagebox)
 else:
     print("Wtf que porongas paso aqui?!")
     
@@ -23,7 +23,7 @@ class Frame7:
             ):
         
         
-        self.Frame = Tk()
+        self.Frame = Toplevel()
         self.error = 0 # se usa para indicar si hubo un error, 0 es todo correcto
         self.Frame.resizable(False,False)  
         self.VentanaPadre = VentanaPadre
@@ -114,7 +114,7 @@ class Frame7:
             if len(_dir) == 0 or len(_dir.split(" ")) == 0:
                 # si no se introdujo ningun valor en el campo _dir o se introdujo solo espacios se usa el directorio actual
                 _dir = "."
-                messagebox.showinfo("Informacio", "Como no se especifico ninguna ruta, se ejecutara la instancia en la carpeta donde este archivo se encuentra")
+                messagebox.showinfo("Informacion", "Como no se especifico ninguna ruta, se ejecutara la instancia en la carpeta donde este archivo se encuentra")
             elif exists(_dir) == False:
                 # Comprobamos si el archivo existe, en caso contrario mostramos un mensaje de error de tipo DirErrorNotFoundOrNotExists
                 error = DirErrorNotFoundOrNotExists(_dir) # Aqui asignamos el error que mostraremos en el except mediante una ventana

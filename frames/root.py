@@ -16,6 +16,8 @@ from .frameHelp import Frame5
 from .aboutThis import Frame6
 #from .frameHTTP import Frame7
 
+from .idiomas import Idiomas
+
 class root:
     
     def __init__(self,                                              # parametro por defecto para la clase
@@ -29,6 +31,7 @@ class root:
         self.FrameActual = 1
         self.InstanciaRoot = self
         self.killAll = False # esto en True cierra todas las pestañas
+        self.idiomas = Idiomas()
         
         self.Frames = [ # instancias de los frames que contendra nuestra ventana raiz
             Frame1(self.root, self.InstanciaRoot),
@@ -69,14 +72,27 @@ class root:
         self.menuHerramientas.add_command(label="Descargar un unico archivo .mp3",  command=self.setFrame3)
         self.menuHerramientas.add_command(label="Descargar una playlist de musica", command=self.setFrame4)
         #self.menuHerramientas.add_command(label="Servidores HTTP", command=self.setFrame7)
-
         
+        self.menuIdiomas = Menu(self.menu_root, tearoff=3)
+        self.menu_root.add_cascade(label="Idiomas", menu=self.menuIdiomas)
+        self.menuIdiomas.add_command(label=self.idiomas.es_ES, command=self.setIdiomaToes_ES)
+        self.menuIdiomas.add_command(label=self.idiomas.en_US, command=self.setIdiomaToen_US)
+        self.menuIdiomas.add_command(label=self.idiomas.zh_CN, command=self.setIdiomaTozh_CN)
+        self.menuIdiomas.add_command(label=self.idiomas.ru_RU, command=self.setIdiomaToru_RU)
+
         self.menu_root.add_command(label="Salir", command=self.killAllWindows)
+
+    # Estas funciones se usan para cambiar el idioma
+    def setIdiomaToes_ES(self): return self.idiomas.setIdioma(self.idiomas.es_ES)
+    def setIdiomaToen_US(self): return self.idiomas.setIdioma(self.idiomas.en_US)
+    def setIdiomaTozh_CN(self): return self.idiomas.setIdioma(self.idiomas.zh_CN)
+    def setIdiomaToru_RU(self): return self.idiomas.setIdioma(self.idiomas.ru_RU)
     
+    
+    # Estas funciones matan ventanas
     def killAllWindows(self):
         self.killAll = True
         self.killWindows()
-        
     def killWindows(self):
         """
             Esta funcion mata todas las ventanas menos las principal
@@ -95,6 +111,7 @@ class root:
             print(ventanas)
             print(self.VentanasAbiertas[ventanas])
             
+            
     
     # con esta funciones podremos indicarle al programa a que ventana queremos cambiar:
     def setFrame1(self): self.FrameActual = 1; self.hide() 
@@ -107,6 +124,7 @@ class root:
     
     # Esta funcion se encarga de cambiar de ventana dependiendo de lo que se haya indicado con los botones del menu
     def hide(self):
+        print(">>",self.idiomas.idioma)
         # esconder los desmas frames
         if  self.FrameActual == 1:
             for frameAnterior in self.Frames:

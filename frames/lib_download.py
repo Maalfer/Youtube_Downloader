@@ -1,7 +1,9 @@
 from pytube import YouTube, exceptions, Playlist
 from pytube.cli import on_progress
 from os import rename, path, remove, listdir
-from .error import *
+from socket import gethostbyaddr, gaierror
+
+from .error import ErrorDeConexion, UnknownError, UrlNotFound
 
 def GetSize(stream):
     """_summary_
@@ -16,7 +18,12 @@ def GetSize(stream):
     """
     return stream.filesize_approx/1024/1024
 
-
+def ComprobarConectividadConInternet():
+    try:
+        info = gethostbyaddr("www.google.com")
+        print(info)
+    except gaierror:
+        raise ErrorDeConexion()
 
 def delFile(ruta, extension=".3gpp"):
     """_summary_
@@ -162,6 +169,8 @@ def downloadPlayList(url, carpeta):
     Returns:
         int: retorna un valor 0 de todo correcto
     """
+    
+    ComprobarConectividadConInternet()
     delFile(carpeta)
     try:
         playlist = Playlist(url)
@@ -208,6 +217,7 @@ def downloadArchivoMusica(url, carpeta):
     Returns:
         int: retorna un valor 0 de todo correcto
     """
+    ComprobarConectividadConInternet()
     delFile(carpeta)
     try:
         music = YouTube(url, on_progress_callback=on_progress)
@@ -259,7 +269,7 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None):
     Returns:
         int: se retorna un 0 si todo fue correcto
     """
-    
+    ComprobarConectividadConInternet()
     informacion = "" # una variable para mostrar informacion al usuario
     try:
         video = YouTube(enlace, on_progress_callback=on_progress)
@@ -299,6 +309,7 @@ def descargarPlaylistVideo(url, carpeta="."):
     Returns:
         int: se retorna un 0 si todo fue correcto
     """
+    ComprobarConectividadConInternet()
     try:
         playlist = Playlist(url)
         print('Numero de videos en la playlist: %s' % len(playlist.video_urls))

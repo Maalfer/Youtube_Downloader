@@ -9,7 +9,7 @@ else:
 
 from .lib_download import descargarUnUnicoVideo
 from .imagenes import Imagenes
-from .error import UrlNotFound, UnknownError
+from .error import UrlNotFound, UnknownError, ErrorDeConexion
 
 class Frame1:
     
@@ -94,13 +94,17 @@ class Frame1:
         error = None
         try:
             try:
-                descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+                try:
+                    descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+                except ErrorDeConexion:
+                    # No se puede conectar a internet
+                    error = ErrorDeConexion(idioma=self.InstanciaPadre.idiomas)
             except UnknownError:
                 # Ocurrio un error desconocido
-                error = UnknownError()
+                error = UnknownError(idioma=self.InstanciaPadre.idiomas)
         except UrlNotFound:
             # Esta url no existe o no se encuentra
-            error = UrlNotFound(self.videos.get())
+            error = UrlNotFound(self.videos.get(), idioma=self.InstanciaPadre.idiomas)
             
         if error != None:
             # Si ocurrio algun error de algun tipo mostrar una ventana con la informacion:
