@@ -1,4 +1,5 @@
 from sys import version
+from os import chdir, getcwd
 from os.path import exists, isfile
 
 if version[0] == "3":
@@ -28,7 +29,7 @@ class Frame7:
         self.VentanaPadre = VentanaPadre
         self.InstanciaPadre = InstanciaPadre
         self.serviciosHTTP = [] # instancias de servidores HTTP
-        
+        #self.ruta_actual = getcwd()
         self.Frame.title("Servicios HTTP") # titulo de la ventana
         
         x = int((self.Frame.winfo_screenwidth()/2) - (tamano_ventana[0]/2)) # calculando la posicion de la ventana para que aparezca en la mitad de la pantalla
@@ -110,7 +111,11 @@ class Frame7:
         
         try:
             _dir = self.dir.get()
-            if exists(_dir) == False:
+            if len(_dir) == 0 or len(_dir.split(" ")) == 0:
+                # si no se introdujo ningun valor en el campo _dir o se introdujo solo espacios se usa el directorio actual
+                _dir = "."
+                messagebox.showinfo("Informacio", "Como no se especifico ninguna ruta, se ejecutara la instancia en la carpeta donde este archivo se encuentra")
+            elif exists(_dir) == False:
                 # Comprobamos si el archivo existe, en caso contrario mostramos un mensaje de error de tipo DirErrorNotFoundOrNotExists
                 error = DirErrorNotFoundOrNotExists(_dir) # Aqui asignamos el error que mostraremos en el except mediante una ventana
                 self.error = 3
@@ -132,17 +137,15 @@ class Frame7:
             #HandlerClass=SimpleHTTPRequestHandler,
             #ServerClass=HTTPServer
         )
-
+        #print(">> > ", self.ruta_actual)
+        #chdir(self.ruta_actual) # volvemos a la misma ruta despues de ejecutar la instancia
+        
         instancia = _serverHTTP.InitServidor() # ejecutamos una instancia del servidor y la guardamos
         print("ip&port({}), ruta({}), instancia({}), numero de instancias({})".format(_serverHTTP.getPortAndHost(), _serverHTTP.dir, instancia,len(self.serviciosHTTP)))
         self.serviciosHTTP.append(_serverHTTP)
         print(self.serviciosHTTP)
-        
-    #[{0: <Hilo(Servidor HTTP(0), started daemon 140225984587456)>}]
-    #[{0: <Hilo(Servidor HTTP(0), started daemon 140225975146176)>}]
 
     def killThisWindows(self):
-        print(self.serviciosHTTP)
         for instancia in self.serviciosHTTP:
             print( instancia.InstanciasDelServidor)
             for servicio in instancia.InstanciasDelServidor:

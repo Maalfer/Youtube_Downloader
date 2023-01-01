@@ -24,6 +24,9 @@ if __name__ == "__main__":
     print ("version del software -> {}".format(__version__))
     print ("doc -> {}".format(__doc__))
 
-    
-    root = root() # instancia a la clase root
-    root.root.mainloop()
+    try:
+        root = root() # instancia a la clase root
+        root.root.mainloop()
+    except KeyboardInterrupt:
+        print("Saliendo")
+        exit(0)

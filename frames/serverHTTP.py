@@ -2,12 +2,14 @@ from sys import version
 from threading import Thread, RLock, _active
 from time import sleep
 from ctypes import pythonapi,  py_object
-from os import chdir
+from os import chdir, getcwd
 
 if version[0] == "3":
-    from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHandler
+    from http.server import HTTPServer, SimpleHTTPRequestHandler
 elif version[0] == "2":
-    from Tkinter import (PhotoImage, Label)
+    #from BaseHTTPServer import (HTTPServer)
+    # error
+    pass
 else:
     print("Wtf que porongas paso aqui?!")
 
@@ -19,12 +21,16 @@ class serverHTTP:
             port=8000,
             _dir=".",
             protocolo= "HTTP/1.0",
+            sys_version='YTServer',
+            server_version="undefine", 
             HandlerClass=SimpleHTTPRequestHandler,
             ServerClass=HTTPServer
         ):
         self.dir = _dir
         self.port = port
         self.host = host
+        self.sys_version = sys_version
+        self.server_version = server_version
         self.HandlerClass = HandlerClass
         self.ServerClass = ServerClass
         self.protocolo = protocolo
@@ -48,6 +54,10 @@ class serverHTTP:
                 super(Hilo, self).__init__()
             
                 self.instanciaServer = None
+                """class ServerFile(SimpleHTTPRequestHandler):
+                    def __init__(self, *args, **kwargs):
+                        super().__init__(*args, **kwargs, directory=_dir)
+                self.instanciaServer.HandlerClass = ServerFile()"""
                 
             def get_id(self):
                 if hasattr(self, "_thread_id"):
@@ -62,10 +72,14 @@ class serverHTTP:
                 """ 
                 sleep(0.1) # esperamos 0.1s
                 server_address = (self.clasePadre.host, self.clasePadre.port)
-                chdir(self.clasePadre.dir)
-                print("server iniciado en: ({})".format(self.clasePadre.getPortAndHost()))
+                #chdir(self.clasePadre.dir)
+                print("server iniciado en: ({}) ruta({})".format(self.clasePadre.getPortAndHost(), getcwd()))
                 self.clasePadre.HandlerClass.protocol_version = self.clasePadre.protocolo
-
+                self.clasePadre.HandlerClass.server_version = self.clasePadre.server_version
+                self.clasePadre.HandlerClass.sys_version = self.clasePadre.sys_version
+                self.clasePadre.HandlerClass.directory = self.clasePadre.dir
+                print(">>> ",self.clasePadre.HandlerClass.directory)
+                
                 try:
                     self.instanciaServer = self.clasePadre.ServerClass(server_address, self.clasePadre.HandlerClass)
                     self.instanciaServer.serve_forever()

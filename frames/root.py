@@ -14,7 +14,8 @@ from .frame3 import Frame3
 from .frame4 import Frame4
 from .frameHelp import Frame5
 from .aboutThis import Frame6
-from .frameHTTP import Frame7
+#from .frameHTTP import Frame7
+
 class root:
     
     def __init__(self,                                              # parametro por defecto para la clase
@@ -67,7 +68,7 @@ class root:
         self.menuHerramientas.add_command(label="Descargar una playlist de videos", command=self.setFrame2)
         self.menuHerramientas.add_command(label="Descargar un unico archivo .mp3",  command=self.setFrame3)
         self.menuHerramientas.add_command(label="Descargar una playlist de musica", command=self.setFrame4)
-        self.menuHerramientas.add_command(label="Servidores HTTP", command=self.setFrame7)
+        #self.menuHerramientas.add_command(label="Servidores HTTP", command=self.setFrame7)
 
         
         self.menu_root.add_command(label="Salir", command=self.killAllWindows)
@@ -102,7 +103,7 @@ class root:
     def setFrame4(self): self.FrameActual = 4; self.hide()
     def setFrame5(self): self.FrameActual = 5; self.hide()
     def setFrame6(self): self.FrameActual = 6; self.hide()
-    def setFrame7(self): self.FrameActual = 7; self.hide()
+    #def setFrame7(self): self.FrameActual = 7; self.hide()
     
     # Esta funcion se encarga de cambiar de ventana dependiendo de lo que se haya indicado con los botones del menu
     def hide(self):
@@ -143,12 +144,12 @@ class root:
             # añadimos el elemento al list contenido dentro del dict, 1 ventana no principal:
             self.VentanasAbiertas[1].append(Frame6(self.root, self.InstanciaRoot).Frame)
             
-        elif self.FrameActual == 7:
+        """elif self.FrameActual == 7:
             #for frameAnterior in self.Frames:
                 #frameAnterior.Frame.destroy()
             #self.Frames.append(Frame7(self.root, self.InstanciaRoot))
             # añadimos el elemento al list contenido dentro del dict, 1 ventana no principal:
-            self.VentanasAbiertas[1].append(Frame7(self.root, self.InstanciaRoot).Frame)
+            self.VentanasAbiertas[1].append(Frame7(self.root, self.InstanciaRoot).Frame)"""
             
     def Sobre_mi(self):
         messagebox.showinfo("Sobre mi", "Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")

@@ -9,6 +9,7 @@ else:
 
 from .lib_download import descargarUnUnicoVideo
 from .imagenes import Imagenes
+from .error import UrlNotFound, UnknownError
 
 class Frame1:
     
@@ -89,7 +90,21 @@ class Frame1:
         carpeta = self.carpeta.get()
         if len(carpeta) == 0:
             carpeta = self.CarpetaActual()
-        descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+            
+        error = None
+        try:
+            try:
+                descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox)
+            except UnknownError:
+                # Ocurrio un error desconocido
+                error = UnknownError()
+        except UrlNotFound:
+            # Esta url no existe o no se encuentra
+            error = UrlNotFound(self.videos.get())
+            
+        if error != None:
+            # Si ocurrio algun error de algun tipo mostrar una ventana con la informacion:
+            messagebox.showerror("Error", error.msg)
     
     """def click_imagen(self):
         messagebox.INFO("Este programa aun esta en desarollo.")"""
