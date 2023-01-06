@@ -1,0 +1,9 @@
+{
+
+    "grosor-borde": 1,
+    "color-background": "white",
+    "size": [400, 250],
+    "tipo-cursor": "tcross",
+    "tipo-borde": "sunken"
+
+}

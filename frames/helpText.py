@@ -1,4 +1,3 @@
-from os.path import exists
 from sys import platform
 
 from .error import UnknownOS, NotFoundThisFile, NotExistsThisLenguaje

@@ -1,0 +1,20 @@
+{
+    "version": 3.0,
+
+    "doc": "programa para descargar videos y musica",
+
+    "autor": {
+        "usuario": "Mario",
+        "github": "https://github.com/Maalfer?tab=repositories"
+    },
+
+    "contribuidores": [{
+            "usuario": "desmon",
+            "github": "https://github.com/desmonHak/Youtube_Downloader"
+        },
+        {
+            "usuario": "Mario",
+            "github": "https://github.com/Maalfer?tab=repositories"
+        }
+    ]
+}

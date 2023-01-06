@@ -96,19 +96,36 @@ def PrintInfoStream(stream):
         fps = stream.fps
     except AttributeError:
         fps = 0 # si es musica no tiene fps xd
-    info = {
-        
-        "size-gb":stream.filesize_gb,
-        "size-mb":stream.filesize_mb,
-        "size-kb":stream.filesize_kb,
-        "name-default":stream.default_filename,
-        "codecs":stream.codecs,
-        "codecs-audio":stream.audio_codec,
-        "tipo":stream.type,
-        "resolucion":stream.resolution,
-        "fps":fps,
-        
-    }
+    print(stream)
+    try:
+        info = {
+            
+            "size-gb":stream.filesize_gb,
+            "size-mb":stream.filesize_mb,
+            "size-kb":stream.filesize_kb,
+            "name-default":stream.default_filename,
+            "codecs":stream.codecs,
+            "codecs-audio":stream.audio_codec,
+            "tipo":stream.type,
+            "resolucion":stream.resolution,
+            "fps":fps,
+     
+        }
+    except KeyError:
+                info = {
+            
+            "size-gb":0,
+            "size-mb":0,
+            "size-kb":0,
+            "name-default":stream.default_filename,
+            "codecs":stream.codecs,
+            "codecs-audio":stream.audio_codec,
+            "tipo":stream.type,
+            "resolucion":stream.resolution,
+            "fps":fps,
+     
+        }
+                
     for key in info.keys():
         print("{} : {}". format(key, info[key]))
     return info
