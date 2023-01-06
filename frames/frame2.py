@@ -72,7 +72,7 @@ class Frame2:
         self.videos = Entry(self.Frame)
         self.videos.grid(row=1, column=1)
 
-        self.boton = Button(self.Frame, text="Descargar :)", command=self.downloadPlayListVideo, relief="groove")
+        self.boton = Button(self.Frame, text=self.InstanciaPadre.idiomas.download_text, command=self.downloadPlayListVideo, relief="groove")
         self.boton.grid(row=2, column=1)        
 
     def downloadPlayListVideo(self):
