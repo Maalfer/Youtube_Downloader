@@ -11,6 +11,7 @@ else:
 from .helpText import Textos
 from .error import UnknownOS
 
+from .load_config import calcular_file, load_file
 
 class Frame5:
     
@@ -20,13 +21,24 @@ class Frame5:
                 InstanciaPadre,
                 color_fondo=15,                                     # color de fondo por defecto de la venta
                 tamano_ventana=[400, 250],                          # tamaño de la ventana por defecto [x, y]
-            ):
+                load_json=True                                      # cargar la configuracion del .json
+        ):
         
+        if load_json:
+            ruta = calcular_file(__file__, "config-GUI")
+            print("[[ ",ruta)
+            config_data = load_file(ruta)
+            print(config_data)
+            
+            color_fondo = config_data["color-background"]
+            tamano_ventana = config_data["size"]
+            
         
         self.VentanaPadre = VentanaPadre
         self.InstanciaPadre = InstanciaPadre
         self.Frame = Toplevel()
-        self.Frame.resizable(False,False)  
+        self.color_fondo = color_fondo
+        self.Frame.resizable(config_data["resizable"][0], config_data["resizable"][1])  
         
         try:
             self.TextHelp = Textos(self.InstanciaPadre.idiomas)
@@ -40,7 +52,7 @@ class Frame5:
         self.Frame.geometry('{}x{}+{}+{}'.format(tamano_ventana[0], tamano_ventana[1], x, y))  # Establecer un tamano a la ventana
         
         self.Frame.title("Ventana de ayuda. Idioma:{}".format(self.InstanciaPadre.idiomas.idioma)) # titulo de la ventana
-        self.Frame.config(bd=color_fondo) # Color de fondo
+        self.Frame.config(bd=self.color_fondo) # Color de fondo
         
         self.menu_frame = Menu(self.Frame) # crear un menu donde poner pestanas
         self.Frame.config(menu=self.menu_frame) # agregarle el menu

@@ -10,6 +10,7 @@ else:
 from .lib_download import descargarUnUnicoVideo
 from .imagenes import Imagenes
 from .error import UrlNotFound, UnknownError, ErrorDeConexion
+from .load_config import calcular_file, load_file
 
 class Frame1:
     
@@ -21,8 +22,21 @@ class Frame1:
             color_fondo="white",                                # color de fondo por defecto de la venta
             tamano_ventana=[400, 250],                          # tamano de la ventana por defecto [x, y]
             tipo_cursor="tcross",                               # Cursor por defecto(cruz)
-            tipo_borde="sunken"                                 # tipo de borde por defecto
+            tipo_borde="sunken",                                # tipo de borde por defecto
+            load_json=True                                      # cargar la configuracion del .json
         ):
+        
+        if load_json:
+            ruta = calcular_file(__file__, "config-GUI")
+            print("[[ ",ruta)
+            config_data = load_file(ruta)
+            print(config_data)
+            
+            grosor_borde = config_data["grosor-borde"]
+            color_fondo = config_data["color-background"]
+            tamano_ventana = config_data["size"]
+            tipo_cursor = config_data["tipo-cursor"]
+            tipo_borde = config_data["tipo-borde"]
         
         self.VentanaPadre = VentanaPadre
         self.Frame = Frame(self.VentanaPadre) # Creamos un frame1. Este es para la parte de descargar videos uno a uno
@@ -55,7 +69,7 @@ class Frame1:
         foto = self.imagenes.addImagenes(self.imagenes.youtubePNG, self.Frame)
         foto.grid(row=0, column=0)
 
-        self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar videos de Youtube\n")
+        self.EqtiquetaInformacion1 = Label(self.Frame, text=self.InstanciaPadre.idiomas.info)
         self.EqtiquetaInformacion1.grid(row=0, column=1)
         # texto1 = StringVar()
         # texto1.set("") 3 Nos permite cambiar el texto a lo largo de la ejecucion del programa
@@ -68,17 +82,17 @@ class Frame1:
         )  
         
 
-        self.EqtiquetaInformacion2 = Label(self.Frame, text="Url del video -> ")
+        self.EqtiquetaInformacion2 = Label(self.Frame, text=self.InstanciaPadre.idiomas.url_video)
         self.EqtiquetaInformacion2.grid(row=1, column=0)
         self.videos = Entry(self.Frame)
         self.videos.grid(row=1, column=1)
 
-        self.EqtiquetaInformacion3 = Label(self.Frame, text="Carpeta donde ingresar el archivo -> ")
+        self.EqtiquetaInformacion3 = Label(self.Frame, text=self.InstanciaPadre.idiomas.dir_file)
         self.EqtiquetaInformacion3.grid(row=2, column=0)
         self.carpeta = Entry(self.Frame)
         self.carpeta.grid(row=2, column=1)
 
-        self.boton = Button(self.Frame, text="Descargar :)", command=self.downloadVideo, relief="groove")
+        self.boton = Button(self.Frame, text=self.InstanciaPadre.idiomas.download_text, command=self.downloadVideo, relief="groove")
         self.boton.grid(row=3, column=1)
         
     def CarpetaActual(self):
