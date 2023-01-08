@@ -208,12 +208,12 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubuserco
             
             break
         except ConnectionError:
-            pass
+            print("No se pudo obtener los datos desde ({})".format(url.format(user)))
         
     if _file != None:
         return _file
     else:
-        raise ErrorDeConexion()
+        raise ErrorDeConexion
     
 
 if __name__ == "__main__":
