@@ -7,6 +7,7 @@ from io import BytesIO
 from random import randint
 
 from frames.error import UnknownOS, ErrorDeConexion
+from frames.load_config import load_file
 
 excluir_directorios = [
     # directorios a excluir de la recopilacion
@@ -73,7 +74,7 @@ def print_tree(tree_dir):
             
             print("[*] ruta -> ({}) archivo -> ({})".format(ruta, archivo))
     
-def get_hash(tree_dir, debug=False, excluir_files=["file.json"]):
+def get_hash(tree_dir, debug=False, excluir_files=["file.json", "get_hash.py"]):
     """_summary_
         Esta funcion obtiene los hash's de los archivos de un arbol de archivos
         y los almacena en un dicionario
@@ -131,13 +132,15 @@ def write_dict_hash_dir(dict_hash_dir, file_name="file.json"):
     _file.write(str(dict_hash_dir))
     _file.close()
 
-def cheack_updates(users=["desmonHak", "Maalfer"], url="https://github.com/{}/Youtube_Downloader/archive/refs/heads/main.zip", tempDir="temp", debug=False):
+def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubusercontent.com/{}/Youtube_Downloader/main/file.json", filename="file_check_update.json", debug=False, fileCheck="file.json"):
     # https://github.com/desmonHak/Youtube_Downloader/archive/refs/heads/main.zip
     # https://github.com/Maalfer/Youtube_Downloader/archive/refs/heads/main.zip
     
     if platform == "Win32": splas = "\\"
     elif platform == "linux" or platform == "linux2": splas = "/"
     else: raise UnknownOS(platform)
+    
+    _file = None
     
     for user in users:
         
@@ -171,7 +174,14 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://github.com/{}/Yo
                 "accept-encoding": "gzip;deflate;br" 
             }
             response = request("GET", url.format(user), headers = headers)
-            carpetaDescargas = "{}{}{}".format(getcwd(), splas, tempDir)
+            
+            _file = open(filename, "w")
+            _file.write(response.text)
+            _file.close()
+            
+            _file = response.text
+            
+            """carpetaDescargas = "{}{}{}".format(getcwd(), splas, tempDir)
             print(carpetaDescargas)
             archivo = ZipFile(BytesIO(response.content))
             archivo.extractall(carpetaDescargas)        
@@ -180,16 +190,37 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://github.com/{}/Yo
             
             
             # obtenemos el nombre de la carpeta donde esta todos los archivos descargados:
-            file_name = archivo.infolist()[0].filename
+            file_name = archivo.infolist()[0].filename"""
+            
+            dataDownload = load_file(filename)
+            dataOriginal = load_file(fileCheck)
+            
+            if len(dataDownload) != len(dataOriginal):
+                # son diferentes, retornar True, hay actualizacion
+                return True
+            else:
+                for _hash in dataOriginal.keys():
+                    if _hash in dataDownload:
+                        print("El hash ({}) del archivo ({}) es correcto".format(_hash, dataDownload[_hash]))
+                    else:
+                        return True # hay hash's diferentes, actualizacion
+                return False # si no se detecto hash's diferenetes y el diccionario es el mismo, no hay actualizacion
             
             break
         except ConnectionError:
             pass
-    return archivo.infolist()
+        
+    if _file != None:
+        return _file
+    else:
+        raise ErrorDeConexion()
     
 
 if __name__ == "__main__":
-    print(cheack_updates(tempDir="")[0].filename)
+    print(cheack_updates())
+    
+    print()
+    
     tree_dir = get_directory(debug=False)
     #print_tree(tree_dir)
     
