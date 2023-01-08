@@ -112,7 +112,7 @@ def PrintInfoStream(stream):
      
         }
     except KeyError:
-                info = {
+            info = {
             
             "size-gb":0,
             "size-mb":0,

@@ -70,7 +70,12 @@ class Frame6:
         
         self.imagenes = Imagenes()
         foto = self.imagenes.addImagenes(self.imagenes.youtubePNG, frame)
-        foto.grid()
+        print(dir(foto))
+        foto.grid(
+            row=2,
+            column=2,
+
+        )
         
     
     def killThisWindows(self):
