@@ -1,5 +1,4 @@
 {
-
     "e234b55e7538212a77065f471d52d507": "./frames/data/helpText-en_US.txt",
     "9d3cc64ef3795a0f7a45b89cb775ca8c": "./frames/data/helpText-zh_CN.txt",
     "7f73061439eee7fe781f939e30dc7004": "./frames/data/helpText-ru_RU.txt",
@@ -34,7 +33,6 @@
     "19472cca3c0de4bde40b4c0abe9c0588": "./.gitignore",
     "668660b7f9b89de2a4dbfd13eee966a9": "./youtube.png",
     "b87eab51894294859d3a9471e51ba96c": "./information.json",
-    "56b1716c12f32f820dbed0544703e6fb": "./file_check_update.json",
     "c95ea6d5da9505663fb58fa33816cd1d": "./Youtube_Downloader.py",
     "7060f411cab438a9c06dbcabdde29433": "./requests.txt",
     "1ebbd3e34237af26da5dc08a4e440464": "./LICENSE.md"
