@@ -1,9 +1,7 @@
-from os import walk, getcwd
+from os import walk
 from sys import platform
 from hashlib import md5
 from requests import request, ConnectionError
-from zipfile import ZipFile
-from io import BytesIO
 from random import randint
 
 from frames.error import UnknownOS, ErrorDeConexion
@@ -196,6 +194,7 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubuserco
             dataOriginal = load_file(fileCheck)
             
             if len(dataDownload) != len(dataOriginal):
+                print("{}\n{}\nA habido cambios en el tamano de los archivos de hash'h, por lo que hay actualizacion.".format(dataDownload, dataOriginal))
                 # son diferentes, retornar True, hay actualizacion
                 return True
             else:
@@ -218,9 +217,6 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubuserco
     
 
 if __name__ == "__main__":
-    print(cheack_updates())
-    
-    print()
     
     tree_dir = get_directory(debug=False)
     #print_tree(tree_dir)
@@ -228,5 +224,7 @@ if __name__ == "__main__":
     dict_hash_dir = get_hash(tree_dir)
     #print_dict_hash_dir(dict_hash_dir)
     write_dict_hash_dir(dict_hash_dir)
+    
+    print(cheack_updates())
     
     

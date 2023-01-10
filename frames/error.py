@@ -87,3 +87,13 @@ class NotExistsThisLenguaje(Exception):
         
         self.lenguaje = lenguaje
         super().__init__(self.lenguaje)
+        
+class NotExistsResolution(Exception):
+    def __init__(self, calidad, calidades, msg=None, idioma=Idiomas()):
+        self.idioma = idioma
+        if msg == None: self.msg = self.idioma.TextNotExistsResolution
+        else: self.msg = msg
+        
+        self.calidad = calidad
+        self.calidades = calidades
+        super().__init__(self.calidad, self.calidades)

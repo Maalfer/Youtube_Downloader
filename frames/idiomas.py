@@ -49,6 +49,7 @@ class Idiomas:
             self.TextUnknownOS = "No se pudo identificar el OS en el que se esta trabajando."
             self.TextNotFoundThisFile = "Este idioma no tiene un archivo de ayuda disponible."
             self.TextNotExistsThisLenguaje = "Este idioma no esta registrado en la lista."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "Para mas informacion"
             self.InformationOfAutor = "Informacion del autor"
@@ -66,6 +67,15 @@ class Idiomas:
             self.url_video = "Url del video -> "
             self.dir_file = "Carpeta donde ingresar el archivo -> "
             self.download_text = "Descargar"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.en_US == self.idioma: # Ingles
             self.TextPortError = "The entered port is not in the range 1 - 2**16"
@@ -78,6 +88,7 @@ class Idiomas:
             self.TextUnknownOS = "Could not identify the OS being worked on"
             self.TextNotFoundThisFile = "This language does not have a help file available."
             self.TextNotExistsThisLenguaje = "This language is not registered in the list."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "For more information"
             self.InformationOfAutor = "Author information"
@@ -95,6 +106,15 @@ class Idiomas:
             self.url_video = "video url -> "
             self.dir_file = "Folder where to put the file -> "
             self.download_text = "Download"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.zh_CN == self.idioma: # Chino
             self.TextPortError = "输入的端口不在 1 - 2**16 范围内"
@@ -107,6 +127,7 @@ class Idiomas:
             self.TextUnknownOS = "无法识别正在使用的操作系统"
             self.TextNotFoundThisFile = "该语言没有可用的帮助文件。"
             self.TextNotExistsThisLenguaje = "该语言未在列表中注册。"
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "想要查询更多的信息"
             self.InformationOfAutor = "作者信息"
@@ -124,6 +145,15 @@ class Idiomas:
             self.url_video = "视频网址 -> "
             self.dir_file = "放置文件的文件夹 -> "
             self.download_text = "释放"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.ru_RU == self.idioma: # Ruso 
             self.TextPortError = "Введенный порт не находится в диапазоне 1–2**16"
@@ -136,6 +166,7 @@ class Idiomas:
             self.TextUnknownOS = "Не удалось определить ОС, над которой ведется работа"
             self.TextNotFoundThisFile = "Для этого языка нет файла справки."
             self.TextNotExistsThisLenguaje = "Этот язык не зарегистрирован в списке."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "Для дополнительной информации"
             self.InformationOfAutor = "Информация об авторе"
@@ -153,6 +184,15 @@ class Idiomas:
             self.url_video = "URL-адрес видео -> "
             self.dir_file = "Папка куда положить файл -> "
             self.download_text = "Увольнять"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.fr_FR == self.idioma: # Frances(Francia)
             self.TextPortError = "Le port saisi n'est pas dans la plage 1 - 2**16"
@@ -165,6 +205,7 @@ class Idiomas:
             self.TextUnknownOS = "Impossible d'identifier le système d'exploitation sur lequel on travaille"
             self.TextNotFoundThisFile = "Cette langue n'a pas de fichier d'aide disponible."
             self.TextNotExistsThisLenguaje = "Cette langue n'est pas enregistrée dans la liste."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "Pour plus d'informations"
             self.InformationOfAutor = "Informations sur l'auteur"
@@ -182,6 +223,15 @@ class Idiomas:
             self.url_video = "URL de la vidéo -> "
             self.dir_file = "Dossier où mettre le fichier -> "
             self.download_text = "Décharge"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.ar_EG == self.idioma: # Arabe Egipto(el mas similar al estandar)
             self.TextPortError = "المنفذ الذي تم إدخاله ليس في النطاق 1 - 2 ** 16"
@@ -194,6 +244,7 @@ class Idiomas:
             self.TextUnknownOS = "تعذر تحديد نظام التشغيل قيد العمل"
             self.TextNotFoundThisFile = "لا يتوفر ملف تعليمات لهذه اللغة."
             self.TextNotExistsThisLenguaje = "هذه اللغة غير مسجلة في القائمة."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "للمزيد من المعلومات"
             self.InformationOfAutor = "معلومات الكاتب"
@@ -211,6 +262,15 @@ class Idiomas:
             self.url_video = "رابط الفيديو -> "
             self.dir_file = "المجلد حيث يتم وضع الملف -> "
             self.download_text = "تسريح"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.ja_JP == self.idioma: # Japones
             self.TextPortError = "入力されたポートは 1 から 2**16 の範囲にありません"
@@ -223,6 +283,7 @@ class Idiomas:
             self.TextUnknownOS = "動作しているOSを特定できませんでした"
             self.TextNotFoundThisFile = "この言語には、利用できるヘルプ ファイルがありません。"
             self.TextNotExistsThisLenguaje = "この言語はリストに登録されていません。"
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "詳細については"
             self.InformationOfAutor = "著者情報"
@@ -240,6 +301,15 @@ class Idiomas:
             self.url_video = "動画の URL -> "
             self.dir_file = "ファイルを置くフォルダ -> "
             self.download_text = "放電"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         elif self.de_DE == self.idioma: # Aleman(Alemania)
             self.TextPortError = "Der eingegebene Port liegt nicht im Bereich 1 - 2**16"
@@ -252,6 +322,7 @@ class Idiomas:
             self.TextUnknownOS = "Das Betriebssystem, an dem gearbeitet wird, konnte nicht identifiziert werden"
             self.TextNotFoundThisFile = "Für diese Sprache ist keine Hilfedatei verfügbar."
             self.TextNotExistsThisLenguaje = "Diese Sprache ist nicht in der Liste registriert."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "Für mehr Informationen"
             self.InformationOfAutor = "Informationen zum Autor"
@@ -269,6 +340,15 @@ class Idiomas:
             self.url_video = "Url del video -> "
             self.dir_file = "Carpeta donde ingresar el archivo -> "
             self.download_text = "Descargar"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
                         
         elif self.esperanto == self.idioma: # esperanto
             self.TextPortError = "La enigita haveno ne estas en la intervalo 1 - 2**16"
@@ -281,6 +361,7 @@ class Idiomas:
             self.TextUnknownOS = "Ne eblis identigi la OS prilaborata"
             self.TextNotFoundThisFile = "Ĉi tiu lingvo ne havas disponeblan helpdosieron."
             self.TextNotExistsThisLenguaje = "Ĉi tiu lingvo ne estas registrita en la listo."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " #
             # textos del memu:
             self.ForMoreInformation = "Por pliaj informoj"
             self.InformationOfAutor = "Aŭtoraj Informoj"
@@ -298,6 +379,15 @@ class Idiomas:
             self.url_video = "Url del video -> "
             self.dir_file = "Carpeta donde ingresar el archivo -> "
             self.download_text = "Descargar"
+            self.calidad_video_text = "Calidad de video -> " #
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" #
+            self.url_playlist = "Url de la playlist -> " #
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" #
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" #
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" #
             
         else:
             raise Exception("Este idioma no se encuentra {}".format(self.idioma))
