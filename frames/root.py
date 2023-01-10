@@ -1,7 +1,7 @@
 from sys import platform, version
 
 if version[0] == "3":
-    from tkinter import messagebox, Tk, Menu, TclError
+    from tkinter import messagebox, Tk, Menu, TclError, Canvas
 elif version[0] == "2":
     from Tkinter import (messagebox, Tk, Menu, TclError)
 else:
@@ -19,8 +19,12 @@ from .aboutThis import Frame6
 # modulo de idiomas:
 from .idiomas import Idiomas
 
+from .imagenes import Imagenes
+
+from .WindowsYesOrNo import WindowsYesOrNo
+
 # modulo para cargar archivos .json:
-from frames.load_config import load_file, calcular_file
+from .load_config import load_file, calcular_file
 
 ruta = __file__
 
@@ -38,6 +42,7 @@ class root:
         print("[[ ",ruta)
         config_data = load_file(ruta)
         print(config_data)
+        #WindowsYesOrNo()
         
         """color_fondo = config_data["color-background"]
         tamano_ventana = config_data["size"]
@@ -45,11 +50,13 @@ class root:
         
     
         self.root = Tk() # instancia de ventana principal
+        
         self.FrameActual = 1
         self.InstanciaRoot = self
         self.killAll = False # esto en True cierra todas las pestañas
         self.idiomas = idioma
         self.color_fondo = color_fondo
+        self.imagenes = Imagenes()
         
         self.Frames = [ # instancias de los frames que contendra nuestra ventana raiz
             Frame1(self.root, self.InstanciaRoot),

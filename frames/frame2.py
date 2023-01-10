@@ -1,14 +1,18 @@
 from .lib_download import descargarPlaylistVideo
 from sys import version
 
+from PIL import ImageTk, Image
+
 if version[0] == "3":
-    from tkinter import Frame, Label, Entry, Button, messagebox
+    from tkinter import  Label, Entry, Button, messagebox, Canvas
 elif version[0] == "2":
-    from Tkinter import (Frame, Label, PhotoImage, Button, Entry)
+    from Tkinter import ( Label, Button, Entry)
 else:
     print("Wtf que porongas paso aqui?!")
 
 from .load_config import calcular_file, load_file
+
+from .imagenes import Imagenes
 
 class Frame2:
     
@@ -37,7 +41,7 @@ class Frame2:
             tipo_borde = config_data["tipo-borde"]
         
         self.VentanaPadre = VentanaPadre
-        self.Frame = Frame(self.VentanaPadre)
+        self.Frame = Canvas(self.VentanaPadre)
         VentanaPadre.FrameActual = 2
         self.InstanciaPadre = InstanciaPadre
         
@@ -56,6 +60,13 @@ class Frame2:
             expand=1, # permitimos expandir el Frame
             side="top",
         )
+        
+        self.imagenes = Imagenes() # hacemos una instancia a la clase imagenes
+        #foto = self.imagenes.addImagenes(self.imagenes.backgroundIMG, self.Frame)
+        self.Frame.create_image(0,0,image=self.imagenes.backgroundIMG, anchor="nw")
+        
+        # si se aumenta la ventana, redimensionar la imagen de fondo:
+        self.Frame.bind('<Configure>',self.img_resize)
 
         self.EqtiquetaInformacion1 = Label(self.Frame, text="Programa creado en Python para \ndescargar vídeos de Youtube\n")
         self.EqtiquetaInformacion1.grid(row=0, column=1)
@@ -77,3 +88,14 @@ class Frame2:
 
     def downloadPlayListVideo(self):
         descargarPlaylistVideo(self.videos.get(), messagebox=messagebox, Frame=self.Frame)
+        
+    def img_resize(self, event):
+        global image, resized, image2
+        image = Image.open(self.imagenes.nameBackground)
+        
+        # redimensionar la imagen:
+        resized = image.resize((event.width, event.height), Image.ANTIALIAS)
+        print(event.width, event.height)
+
+        image2 = ImageTk.PhotoImage(resized)
+        self.Frame.create_image(0, 0, image=image2, anchor='nw')

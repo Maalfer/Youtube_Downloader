@@ -13,7 +13,11 @@ class Imagenes:
         
         self.ImagenesAnadidas = []
         
-        self.youtubePNG = PhotoImage(file="youtube.png") # agregar una imagen
+        self.nameYoutubePNG = "imagenes/youtube.png"
+        self.youtubePNG = PhotoImage(file=self.nameYoutubePNG) # agregar una imagen
+        
+        self.nameBackground = "imagenes/UseThisTooltoMake2DPixelSpritesOnlineforFree.png"
+        self.backgroundIMG = PhotoImage(file=self.nameBackground) # origen: https://br.pinterest.com/pin/404620347766483651/
         
     def addImagenes(self, _PhotoImage, frame):
         """

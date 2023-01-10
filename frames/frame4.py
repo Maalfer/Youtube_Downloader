@@ -1,13 +1,17 @@
 from sys import version
 
+from PIL import ImageTk, Image
+
 if version[0] == "3":
-    from tkinter import Frame
+    from tkinter import Canvas
 elif version[0] == "2":
-    from Tkinter import Frame
+    from Tkinter import Canvas
 else:
     print("Wtf que porongas paso aqui?!")
 
 from .load_config import calcular_file, load_file
+
+from .imagenes import Imagenes
 
 class Frame4:
     
@@ -36,9 +40,16 @@ class Frame4:
             tipo_borde = config_data["tipo-borde"]
         
         self.VentanaPadre = VentanaPadre
-        self.Frame = Frame(self.VentanaPadre) # Creamos un frame4. Este sera para descargar musica de una playlist
+        self.Frame = Canvas(self.VentanaPadre) # Creamos un frame4. Este sera para descargar musica de una playlist
         VentanaPadre.FrameActual = 4
         self.InstanciaPadre = InstanciaPadre
+        
+        self.imagenes = Imagenes() # hacemos una instancia a la clase imagenes
+        #foto = self.imagenes.addImagenes(self.imagenes.backgroundIMG, self.Frame)
+        self.Frame.create_image(0,0,image=self.imagenes.backgroundIMG, anchor="nw")
+        
+        # si se aumenta la ventana, redimensionar la imagen de fondo:
+        self.Frame.bind('<Configure>',self.img_resize)
         
         self.Frame.config(
             width=tamano_ventana[0], 
@@ -55,3 +66,14 @@ class Frame4:
             expand=1, # permitimos expandir el Frame
             side="top",
         )
+
+    def img_resize(self, event):
+        global image, resized, image2
+        image = Image.open(self.imagenes.nameBackground)
+        
+        # redimensionar la imagen:
+        resized = image.resize((event.width, event.height), Image.ANTIALIAS)
+        print(event.width, event.height)
+
+        image2 = ImageTk.PhotoImage(resized)
+        self.Frame.create_image(0, 0, image=image2, anchor='nw')

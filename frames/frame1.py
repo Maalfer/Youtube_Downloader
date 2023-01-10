@@ -1,9 +1,11 @@
 from sys import platform, version
 
+from PIL import ImageTk, Image
+
 if version[0] == "3":
-    from tkinter import Frame, Label, Button, Entry, messagebox
+    from tkinter import Label, Button, Entry, messagebox, Canvas
 elif version[0] == "2":
-    from Tkinter import (Frame, Label, Button, Entry, messagebox)
+    from Tkinter import (Label, Button, Entry, messagebox)
 else:
     print("Wtf que porongas paso aqui?!")
 
@@ -39,7 +41,7 @@ class Frame1:
             tipo_borde = config_data["tipo-borde"]
         
         self.VentanaPadre = VentanaPadre
-        self.Frame = Frame(self.VentanaPadre) # Creamos un frame1. Este es para la parte de descargar videos uno a uno
+        self.Frame = Canvas(self.VentanaPadre) # Creamos un frame1. Este es para la parte de descargar videos uno a uno
         VentanaPadre.FrameActual = 1
         self.InstanciaPadre = InstanciaPadre
     
@@ -60,6 +62,11 @@ class Frame1:
         )
         
         self.imagenes = Imagenes() # hacemos una instancia a la clase imagenes
+        #foto = self.imagenes.addImagenes(self.imagenes.backgroundIMG, self.Frame)
+        self.Frame.create_image(0,0,image=self.imagenes.backgroundIMG, anchor="nw")
+        
+        # si se aumenta la ventana, redimensionar la imagen de fondo:
+        self.Frame.bind('<Configure>',self.img_resize)
         """self.botonImagen = Button(
             self.VentanaPadre,
             image=self.imagen,
@@ -80,7 +87,6 @@ class Frame1:
             padx=10, pady=10    # Margene
             #textvariable=texto1 # texto variable
         )  
-        
 
         self.EqtiquetaInformacion2 = Label(self.Frame, text=self.InstanciaPadre.idiomas.url_video)
         self.EqtiquetaInformacion2.grid(row=1, column=0)
@@ -94,6 +100,17 @@ class Frame1:
 
         self.boton = Button(self.Frame, text=self.InstanciaPadre.idiomas.download_text, command=self.downloadVideo, relief="groove")
         self.boton.grid(row=3, column=1)
+        
+    def img_resize(self, event):
+        global image, resized, image2
+        image = Image.open(self.imagenes.nameBackground)
+        
+        # redimensionar la imagen:
+        resized = image.resize((event.width, event.height), Image.ANTIALIAS)
+        print(event.width, event.height)
+
+        image2 = ImageTk.PhotoImage(resized)
+        self.Frame.create_image(0, 0, image=image2, anchor='nw')
         
     def CarpetaActual(self):
         if platform == "Win32":

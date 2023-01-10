@@ -203,7 +203,7 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubuserco
                     if _hash in dataDownload:
                         print("El hash ({}) del archivo ({}) es correcto".format(_hash, dataDownload[_hash]))
                     else:
-                        print(_hash)
+                        print("Al parecer hubo cambios de esta version ({})".format(_hash))
                         return True # hay hash's diferentes, actualizacion
                 return False # si no se detecto hash's diferenetes y el diccionario es el mismo, no hay actualizacion
             
