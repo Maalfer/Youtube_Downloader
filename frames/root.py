@@ -21,8 +21,6 @@ from .idiomas import Idiomas
 
 from .imagenes import Imagenes
 
-from .WindowsYesOrNo import WindowsYesOrNo
-
 # modulo para cargar archivos .json:
 from .load_config import load_file, calcular_file
 
