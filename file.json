@@ -22,7 +22,7 @@
     "9b1b5e4a3830e40e230ca2eb98b97f58": "./frames/error.py",
     "fb9ba37ae1aaa4db70366cc267a390c8": "./frames/helpText.py",
     "5a3ad50dda96680a5993f3eb01cd91da": "./frames/load_config.py",
-    "50073acc052f4f2642fd1a2470b0f65d": "./frames/root.py",
+    "c4b8bcce0e4fda9495150b27e4d91603": "./frames/root.py",
     "8092c62ce8be049eb68d0c5ab5ef9128": "./frames/frameHelp.py",
     "ab2906dd99004f88e99f030a60276348": "./frames/idiomas.py",
     "d300dfb04bcf6dc48480addaab8642ca": "./config-GUI/frame1.json",
@@ -32,10 +32,10 @@
     "668660b7f9b89de2a4dbfd13eee966a9": "./imagenes/youtube.png",
     "05a00e5bdf237eb051c13ea702b1d604": "./imagenes/UseThisTooltoMake2DPixelSpritesOnlineforFree.png",
     "0300e7d1951ff8869e9e4bf1cd9c016a": "./images-readme/error.png",
-    "25612f90c1fd4a59473229fd53c00c87": "./README.md",
+    "f617acd36604036463df37854229678b": "./README.md",
     "19472cca3c0de4bde40b4c0abe9c0588": "./.gitignore",
+    "d7d08043af688cb1ae262b23a29610ad": "./requirements.txt",
     "b87eab51894294859d3a9471e51ba96c": "./information.json",
     "c95ea6d5da9505663fb58fa33816cd1d": "./Youtube_Downloader.py",
-    "d7d08043af688cb1ae262b23a29610ad": "./requests.txt",
     "1ebbd3e34237af26da5dc08a4e440464": "./LICENSE.md"
 }
