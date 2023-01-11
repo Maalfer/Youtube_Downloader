@@ -38,7 +38,7 @@ class Textos():
             ruta (str): ruta de este archivo
             archivo (str): nombre del archivo
         """
-        if platform == "Win32":
+        if platform == "win32":
             ruta = ruta.split("\\") 
         elif platform == "linux" or platform == "linux2":
             ruta = ruta.split("/") 
@@ -52,7 +52,7 @@ class Textos():
         # agregamos el nombre del archivo a la ruta:
         ruta.append(archivo)
         # volvemos a convertir la ruta a un string:
-        if platform == "Win32":
+        if platform == "win32":
             ruta = "\\".join(ruta)
         elif platform == "linux" or platform == "linux2":
             ruta = "/".join(ruta)
