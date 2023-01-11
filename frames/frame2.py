@@ -108,7 +108,7 @@ class Frame2:
         self.boton.place(relx=0.6, rely=0.83) 
         
     def CarpetaActual(self):
-        if platform == "Win32":
+        if platform == "win32":
             return ".\\"
         elif platform == "linux" or platform == "linux2":
             return "./"
