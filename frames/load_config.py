@@ -13,7 +13,7 @@ def calcular_file(file, ruta):
     # convertimos la ruta recibida a la plataforma para la plataforma selecionada para evitar problemas
     ruta = calcular_ruta_format_linux_to_win(ruta)
     
-    if platform == "Win32": splas = "\\"
+    if platform == "win32": splas = "\\"
     elif platform == "linux" or platform == "linux2": splas = "/"
     else: raise UnknownOS(platform)
     
@@ -32,7 +32,7 @@ def calcular_ruta_format_linux_to_win(ruta):
         ruta (_type_): _description_
     """
     # volvemos a convertir la ruta a un string:
-    if platform == "Win32": return "\\".join(ruta.split("/"))
+    if platform == "win32": return "\\".join(ruta.split("/"))
     elif platform == "linux" or platform == "linux2": return "/".join(ruta.split("/"))
     else: raise UnknownOS(platform)
         
