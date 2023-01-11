@@ -32,7 +32,7 @@ def get_directory(ruta=".", debug=False):
     
     arbol_directorios = dict()
     
-    if platform == "Win32": splas = "\\"
+    if platform == "win32": splas = "\\"
     elif platform == "linux" or platform == "linux2": splas = "/"
     else: raise UnknownOS(platform)
     
@@ -89,7 +89,7 @@ def get_hash(tree_dir, debug=False, excluir_files=["file.json", "get_hash.py", "
     """
     dict_hash_dir = dict()
 
-    if platform == "Win32": splas = "\\"
+    if platform == "win32": splas = "\\"
     elif platform == "linux" or platform == "linux2": splas = "/"
     else: raise UnknownOS(platform)
     
@@ -134,7 +134,7 @@ def cheack_updates(users=["desmonHak", "Maalfer"], url="https://raw.githubuserco
     # https://github.com/desmonHak/Youtube_Downloader/archive/refs/heads/main.zip
     # https://github.com/Maalfer/Youtube_Downloader/archive/refs/heads/main.zip
     
-    if platform == "Win32": splas = "\\"
+    if platform == "win32": splas = "\\"
     elif platform == "linux" or platform == "linux2": splas = "/"
     else: raise UnknownOS(platform)
     
