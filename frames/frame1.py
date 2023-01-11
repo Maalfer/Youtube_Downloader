@@ -141,7 +141,7 @@ class Frame1:
         self.Frame.create_image(0, 0, image=image2, anchor='nw')
         
     def CarpetaActual(self):
-        if platform == "Win32":
+        if platform == "win32":
             return ".\\"
         elif platform == "linux" or platform == "linux2":
             return "./"
