@@ -106,7 +106,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Download a music playlist"
             self.idiomasText = "Languages"
             self.exit = "Exit"
-            self.ajustes = "Ajustes"
+            self.ajustes = "settings"
             # textos frame1.py
             self.info = "\nProgram created in Python to \ndownload videos from Youtube\n"
             self.url_video = "video url -> "
@@ -122,9 +122,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nSection to download a\nmp3 music playlist\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "Project created on {} by {}".format("10-10-10", "Maalfer")
+            self.disponible = "Available in :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "This project allows you to \ndownload content from YouTube."
             
         elif self.zh_CN == self.idioma: # Chino
             self.TextPortError = "输入的端口不在 1 - 2**16 范围内"
@@ -150,7 +150,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "下载音乐播放列表"
             self.idiomasText = "语言"
             self.exit = "出去"
-            self.ajustes = "Ajustes"
+            self.ajustes = "设置"
             # textos frame1.py
             self.info = "\n在 Python 中创建的程序 \n下载 Youtube 视频\n"
             self.url_video = "视频网址 -> "
@@ -166,9 +166,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\n下载部分\nmp3 音乐播放列表\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "{} 在 {} 上创建的项目".format("10-10-10", "Maalfer")
+            self.disponible = "适用于 :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "该项目允许您\n从 YouTube 下载内容。"
             
         elif self.ru_RU == self.idioma: # Ruso 
             self.TextPortError = "Введенный порт не находится в диапазоне 1–2**16"
@@ -210,9 +210,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nРаздел для скачивания\nмузыкальный плейлист в формате mp3\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "Проект создан {} пользователем {}".format("10-10-10", "Maalfer")
+            self.disponible = "Доступно в:\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Этот проект позволяет вам \nзагружать контент с YouTube."
             
         elif self.fr_FR == self.idioma: # Frances(Francia)
             self.TextPortError = "Le port saisi n'est pas dans la plage 1 - 2**16"
@@ -238,7 +238,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Télécharger une playlist musicale"
             self.idiomasText = "langues"
             self.exit = "sortir"
-            self.ajustes = "Ajustes"
+            self.ajustes = "Les paramètres"
             # textos frame1.py
             self.info = "\nProgramme créé en Python pour \ntélécharger des vidéos Youtube\n"
             self.url_video = "URL de la vidéo -> "
@@ -254,9 +254,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nRubrique pour télécharger un\nliste de lecture de musique mp3\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "Projet créé par {} utilisateur {}".format("10-10-10", "Maalfer")
+            self.disponible = "Disponible dans :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Ce projet vous permet \nde télécharger du contenu depuis YouTube."
             
         elif self.ar_EG == self.idioma: # Arabe Egipto(el mas similar al estandar)
             self.TextPortError = "المنفذ الذي تم إدخاله ليس في النطاق 1 - 2 ** 16"
@@ -282,7 +282,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "قم بتنزيل قائمة تشغيل الموسيقى"
             self.idiomasText = "اللغات"
             self.exit = "أخرج"
-            self.ajustes = "Ajustes"
+            self.ajustes = "إعدادات"
             # textos frame1.py
             self.info = "\n برنامج تم إنشاؤه في Python من أجل \n تنزيل مقاطع فيديو YouTube \n"
             self.url_video = "رابط الفيديو -> "
@@ -298,9 +298,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nقسم للتحميل أ\nقائمة تشغيل موسيقى mp3\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "تم إنشاء المشروع في {} بواسطة {}".format("10-10-10", "Maalfer")
+            self.disponible = "متوفر في :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "يتيح لك هذا المشروع \n تنزيل المحتوى من YouTube."
             
         elif self.ja_JP == self.idioma: # Japones
             self.TextPortError = "入力されたポートは 1 から 2**16 の範囲にありません"
@@ -326,7 +326,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "音楽プレイリストをダウンロードする"
             self.idiomasText = "言語"
             self.exit = "外出"
-            self.ajustes = "Ajustes"
+            self.ajustes = "設定"
             # textos frame1.py
             self.info = "\nPython で作成されたプログラム \nユーチューブの動画をダウンロード\n"
             self.url_video = "動画の URL -> "
@@ -342,9 +342,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nダウンロードするセクション\nmp3 音楽プレイリスト\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "{} によって {} に作成されたプロジェクト".format("10-10-10", "Maalfer")
+            self.disponible = "で利用可能 :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "このプロジェクトでは、\nYouTube からコンテンツをダウンロードできます。."
             
         elif self.de_DE == self.idioma: # Aleman(Alemania)
             self.TextPortError = "Der eingegebene Port liegt nicht im Bereich 1 - 2**16"
@@ -370,7 +370,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Laden Sie eine Musikwiedergabeliste herunter"
             self.idiomasText = "Sprachen"
             self.exit = "Hinausgehen"
-            self.ajustes = "Ajustes"
+            self.ajustes = "Einstellungen"
             # textos frame1.py
             self.info = "\nIn Python erstelltes Programm zu \nYouTube-Videos herunterladen\n"
             self.url_video = "Video-URL -> "
@@ -386,9 +386,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nAbschnitt zum Herunterladen a\nMP3-Musik-Playlist\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "Projekt erstellt am {} von {}".format("10-10-10", "Maalfer")
+            self.disponible = "Verfügbar in :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Mit diesem Projekt können Sie \nInhalte von YouTube herunterladen."
                         
         elif self.esperanto == self.idioma: # esperanto
             self.TextPortError = "La enigita haveno ne estas en la intervalo 1 - 2**16"
@@ -414,7 +414,7 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Elŝutu muzikliston"
             self.idiomasText = "Lingvoj"
             self.exit = "Eliru"
-            self.ajustes = "Ajustes"
+            self.ajustes = "Agordoj"
             # textos frame1.py
             self.info = "\nProgramo kreita en Python al \nelŝutu videojn de Youtube\n"
             self.url_video = "video URL -> "
@@ -430,9 +430,9 @@ class Idiomas:
             # textos frame4.py 
             self.info4 = "\nSekcio por elŝuti a\nmp3-muzika ludlisto\n" 
             # textos setting.py
-            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
-            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
-            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
+            self.fecha_creacion = "Projekto kreita je {} de {}".format("10-10-10", "Maalfer")
+            self.disponible = "Havebla en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Ĉi tiu projekto permesas al vi \nelŝuti enhavon de Jutubo."
             
         else:
             raise Exception("Este idioma no se encuentra {}".format(self.idioma))
