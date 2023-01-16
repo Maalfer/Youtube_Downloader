@@ -2,7 +2,7 @@ from pytube import YouTube, exceptions, Playlist
 from pytube.cli import on_progress
 from os import rename, path, remove, listdir
 from socket import gethostbyaddr, gaierror
-
+from threading import Thread
 from .error import ErrorDeConexion, UnknownError, UrlNotFound, NotExistsResolution
 
 calidades_video_posibles = [
@@ -337,18 +337,17 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None, res=None
         if res == None: size = PrintInfoStream(info["resoluciones-posibles"].get_highest_resolution())
         else: 
             chek_calidad(res, enlace)
-            size = PrintInfoStream(info["resoluciones-posibles"].filter(res=res).first())
+            size = PrintInfoStream(info["resoluciones-posibles"].filter(res=res, mime_type="video/mp4").first())
         PrintInfo(info)
 
         informacion = "Se va a descargar el video con nombre \"{}\" el cual pesa {} MB.".format(info["titulo"], size["size-mb"])
-        if messagebox != None: messagebox.showinfo("Exito", informacion)
+        if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion)).start()
         else: print(informacion)
         
         if res == None: descarga = video.streams.get_highest_resolution()
         else: 
-            descarga = video.streams.filter(res=res).first()
-        
-        descarga.download(carpetaDescarga)
+            descarga = video.streams.filter(res=res, mime_type="video/mp4").first()
+        Thread(target=descarga.download, args=(carpetaDescarga,)).start()
         informacion =  "El video fue descargado con exito en el directorio actual."
         if messagebox != None: messagebox.showinfo("Exito", informacion)
         else: print(informacion)
@@ -389,20 +388,20 @@ def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
                         # si el video selecionado no tiene la calidad que se escogio disponible, se descarga con la mayor calidad
                         if res == None: music = music.streams.get_highest_resolution()
                         else: 
-                            chek_calidad(res, url)
-                            music.streams.filter(res=res).first()
+                            Thread(target=chek_calidad, args=(res, url)).start()
+                            music.streams.filter(res=res, mime_type="video/mp4").first()
                     except NotExistsResolution:
                         music = music.streams.get_highest_resolution()
-                    music.download(carpeta)
+                    Thread(target=music.download, args=(carpeta,)).start()
                     informacion = "[+] Archivo descargado -> {}".format(carpeta+music.title + ".mp4")
                     if messagebox == None: print(informacion)
-                    else: messagebox.showinfo("Exito", informacion)
+                    else:  Thread(target=messagebox.showinfo, args=("Exito", informacion)).start()
                 except KeyError:
                     raise UnknownError()
             else:
                 informacion = "[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3")
                 if messagebox == None: print(informacion)
-                else: messagebox.showinfo("Exito", informacion)
+                else:  Thread(target=messagebox.showinfo, args=("Exito", informacion)).start()
         # Todo salio correcto:            
         return 0
     except exceptions.RegexMatchError:

@@ -15,6 +15,7 @@ from .frame4 import Frame4
 from .frameHelp import Frame5
 from .aboutThis import Frame6
 #from .frameHTTP import Frame7
+from .setting import Frame8
 
 # modulo de idiomas:
 from .idiomas import Idiomas
@@ -83,7 +84,6 @@ class root:
         self.root.config(menu=self.menu_root) # agregarle el menu a la venta principal
         
         self.menuInformacion = Menu(self.menu_root, tearoff=4)
-        print("asdfas", self.idiomas)
         self.menu_root.add_cascade( label=self.idiomas.ForMoreInformation,  menu=self.menuInformacion)
         self.menuInformacion.add_command(label=self.idiomas.InformationOfAutor, command=self.Sobre_mi)
         self.menuInformacion.add_command(label=self.idiomas.Help, command=self.setFrame5)
@@ -108,7 +108,11 @@ class root:
         self.menuIdiomas.add_command(label=self.idiomas.ja_JP, command=self.setIdiomaToja_JP)
         self.menuIdiomas.add_command(label=self.idiomas.de_DE, command=self.setIdiomaTode_DE)
         self.menuIdiomas.add_command(label=self.idiomas.esperanto, command=self.setIdiomaToesperanto)
+        
+        self.menu_root.add_command(label=self.idiomas.ajustes, command=self.setFrame8)
+
         self.menu_root.add_command(label=self.idiomas.exit, command=self.killAllWindows)
+        
 
     def ResetWindowsMain(self):
         """_summary_
@@ -160,6 +164,7 @@ class root:
     def setFrame5(self): self.FrameActual = 5; self.hide()
     def setFrame6(self): self.FrameActual = 6; self.hide()
     #def setFrame7(self): self.FrameActual = 7; self.hide()
+    def setFrame8(self): self.FrameActual = 8; self.hide()
     
     # Esta funcion se encarga de cambiar de ventana dependiendo de lo que se haya indicado con los botones del menu
     def hide(self):
@@ -201,13 +206,23 @@ class root:
             # añadimos el elemento al list contenido dentro del dict, 1 ventana no principal:
             self.VentanasAbiertas[1].append(Frame6(self.root, self.InstanciaRoot).Frame)
             
-        """elif self.FrameActual == 7:
+            """elif self.FrameActual == 7:
+                #for frameAnterior in self.Frames:
+                    #frameAnterior.Frame.destroy()
+                #self.Frames.append(Frame7(self.root, self.InstanciaRoot))
+                # añadimos el elemento al list contenido dentro del dict, 1 ventana no principal:
+                self.VentanasAbiertas[1].append(Frame7(self.root, self.InstanciaRoot).Frame)"""
+            
+        elif self.FrameActual == 8:
             #for frameAnterior in self.Frames:
                 #frameAnterior.Frame.destroy()
             #self.Frames.append(Frame7(self.root, self.InstanciaRoot))
             # añadimos el elemento al list contenido dentro del dict, 1 ventana no principal:
-            self.VentanasAbiertas[1].append(Frame7(self.root, self.InstanciaRoot).Frame)"""
-            
+            self.VentanasAbiertas[1].append(Frame8(self.root, self.InstanciaRoot).Frame)
+        
+        else:
+            raise Exception("No existe esta opcion.")
+        
     def Sobre_mi(self):
         messagebox.showinfo("Sobre mi", "Enlace a mi perfil de GitHub:\nhttps://github.com/Maalfer")
 

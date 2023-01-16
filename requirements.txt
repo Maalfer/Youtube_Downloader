@@ -1,3 +1,5 @@
 pytube
 pyinstaller
 pillow
+requests
+py2exe

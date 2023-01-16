@@ -99,7 +99,7 @@ start Youtube_Downloader.exe
 ### Generar un ejecutable con:
 
 ```batch
-pyinstaller --onefile -i youtube.ico  Youtube_Downloader.py
+pyinstaller --onefile -i imagenes/youtube.ico  Youtube_Downloader.py
 ```
 
 Si fuera necesario. El archivo .exe generado se encuentra alojado en la carpeta "`dist`", esta se ubica donde se encontraba el script `Youtube_Downloader.py`. Si se les da la casualidad de que se les genera un error similar a este:
@@ -206,7 +206,7 @@ Successfully installed pyinstaller-5.7.0
 En el caso de que le saltara un error distinto relacionado con el _bootlocale, usted debera añadir el parametro `--exclude-module _bootlocale` al usar pyinstaller.
 
 ```batch
-pyinstaller --exclude-module _bootlocale --onefile -i youtube.ico  Youtube_Downloader.py
+pyinstaller --exclude-module _bootlocale --onefile -i imagenes/youtube.ico  Youtube_Downloader.py
 ```
 
 ---

@@ -1,9 +1,9 @@
 from sys import version, platform
 
 if version[0] == "3":
-    from tkinter import Toplevel, Menu, Text, END, TOP, Message, GROOVE, Scrollbar, VERTICAL, Listbox, RIGHT, Y, messagebox
+    from tkinter import Toplevel, Menu, Text, END, TOP, Scrollbar, RIGHT, Y, messagebox
 elif version[0] == "2":
-    from Tkinter import (Toplevel, Menu, Text, END, TOP, Message, GROOVE, messagebox)
+    from Tkinter import (Toplevel, Menu, Text, END, TOP, Scrollbar, RIGHT, Y, messagebox)
 else:
     print("Wtf que porongas paso aqui?!")
 
@@ -57,7 +57,7 @@ class Frame5:
         self.menu_frame = Menu(self.Frame) # crear un menu donde poner pestanas
         self.Frame.config(menu=self.menu_frame) # agregarle el menu
         
-        self.menu_frame.add_command(label="Salir", command=self.killThisWindows)
+        self.menu_frame.add_command(label=self.InstanciaPadre.idiomas.exit, command=self.killThisWindows)
     
         # crear una barra de desplazamiento:
         barraDesplazamiento = Scrollbar(self.Frame)
