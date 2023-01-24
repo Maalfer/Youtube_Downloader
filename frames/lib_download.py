@@ -337,7 +337,7 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None, res=None
         if res == None: size = PrintInfoStream(info["resoluciones-posibles"].get_highest_resolution())
         else: 
             chek_calidad(res, enlace)
-            size = PrintInfoStream(info["resoluciones-posibles"].filter(res=res, mime_type="video/mp4").first())
+            size = PrintInfoStream(info["resoluciones-posibles"].filter(res=res, progressive=True).first())
         PrintInfo(info)
 
         informacion = "Se va a descargar el video con nombre \"{}\" el cual pesa {} MB.".format(info["titulo"], size["size-mb"])
@@ -346,7 +346,7 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None, res=None
         
         if res == None: descarga = video.streams.get_highest_resolution()
         else: 
-            descarga = video.streams.filter(res=res, mime_type="video/mp4").first()
+            descarga = video.streams.filter(res=res, progressive=True).first()
         Thread(target=descarga.download, args=(carpetaDescarga,)).start()
         informacion =  "El video fue descargado con exito en el directorio actual."
         if messagebox != None: messagebox.showinfo("Exito", informacion)
@@ -389,7 +389,7 @@ def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
                         if res == None: music = music.streams.get_highest_resolution()
                         else: 
                             Thread(target=chek_calidad, args=(res, url)).start()
-                            music.streams.filter(res=res, mime_type="video/mp4").first()
+                            music.streams.filter(res=res, progressive=True).first()
                     except NotExistsResolution:
                         music = music.streams.get_highest_resolution()
                     Thread(target=music.download, args=(carpeta,)).start()
