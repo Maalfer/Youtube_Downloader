@@ -1,5 +1,5 @@
 from sys import version, platform
-
+from threading import Thread
 from PIL import ImageTk, Image
 from tkinter.ttk import Combobox
 
@@ -119,7 +119,7 @@ class Frame4:
         try: 
             try:
                 try:
-                    downloadPlayList(self.videos.get(), carpeta=carpeta, messagebox=messagebox)
+                    Thread(target=downloadPlayList, args=(self.videos.get(), carpeta, messagebox), daemon=True).start()
                 except UrlNotFound as error:
                     # Esta url no existe o no se encuentra
                     messagebox.showerror("Error", error.msg)

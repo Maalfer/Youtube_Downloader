@@ -2,6 +2,7 @@ from sys import version, platform
 
 from PIL import ImageTk, Image
 from tkinter.ttk import Combobox
+from threading import Thread
 
 if version[0] == "3":
     from tkinter import  Label, Entry, Button, messagebox, Canvas, StringVar
@@ -120,7 +121,7 @@ class Frame2:
         try: 
             try:
                 try:
-                    descargarPlaylistVideo(self.videos.get(), carpeta=carpeta , messagebox=messagebox)
+                    Thread(target=descargarPlaylistVideo, args=(self.videos.get(), carpeta, messagebox), daemon=True).start()
                 except UrlNotFound as error:
                     # Esta url no existe o no se encuentra
                     messagebox.showerror("Error", error.msg)

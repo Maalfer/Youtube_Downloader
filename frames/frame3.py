@@ -1,5 +1,5 @@
 from sys import version, platform
-
+from threading import Thread
 from PIL import ImageTk, Image
 
 if version[0] == "3":
@@ -120,7 +120,7 @@ class Frame3:
         try: 
             try:
                 try:
-                    downloadArchivoMusica(self.videos.get(), carpeta=carpeta, messagebox=messagebox)
+                    Thread(target=downloadArchivoMusica, args=(self.videos.get(), carpeta, messagebox), daemon=True).start()
                 except UrlNotFound as error:
                     # Esta url no existe o no se encuentra
                     messagebox.showerror("Error", error.msg)

@@ -151,6 +151,7 @@ class root:
                             ventana.destroy() # matamos cada ventana
                     except TclError:
                         print("Esta ventana ya fue destruida")
+                exit()
             print(ventanas)
             print(self.VentanasAbiertas[ventanas])
             

@@ -1,5 +1,5 @@
 from sys import platform, version
-
+from threading import Thread
 from PIL import ImageTk, Image
 
 if version[0] == "3":
@@ -156,7 +156,7 @@ class Frame1:
             try:
                 try:
                     try:
-                        descargarUnUnicoVideo(self.videos.get(), carpetaDescarga=carpeta,  messagebox=messagebox, res=calidades_video_posibles[self.comb.current()])
+                        Thread(target=descargarUnUnicoVideo, args=(self.videos.get(), carpeta, messagebox, calidades_video_posibles[self.comb.current()]), daemon=True).start()
                     except ErrorDeConexion as error:
                         # No se puede conectar a internet
                         messagebox.showerror("Error", error.msg)
