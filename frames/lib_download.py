@@ -95,24 +95,42 @@ def GetInfo(YouTube):
     Returns:
         dict: retorna un valor de tipo diccionario con informacion hacerla de la url introducida
     """
-    
-    info = {
-        
-        # si tiene restricion de edad True:
-        "retricion-edad":YouTube.age_restricted,
-        
-        # da informacion acerca de las distintas resoluciones:
-        "resoluciones-posibles": YouTube.streams,
-        
-        # author del video o musica
-        "author": YouTube.author,
-        
-        # titulo de la descarga
-        "titulo": YouTube.title,
-        
-        # url del link
-        "url":YouTube.watch_url,
-    }
+    try:
+        info = {
+            
+            # si tiene restricion de edad True:
+            "retricion-edad":YouTube.age_restricted,
+            
+            # da informacion acerca de las distintas resoluciones:
+            "resoluciones-posibles": YouTube.streams,
+            
+            # author del video o musica
+            "author": YouTube.author,
+            
+            # titulo de la descarga
+            "titulo": YouTube.title,
+            
+            # url del link
+            "url":YouTube.watch_url,
+        }
+    except KeyError:
+                info = {
+            
+            # si tiene restricion de edad True:
+            "retricion-edad":YouTube.age_restricted,
+            
+            # da informacion acerca de las distintas resoluciones:
+            "resoluciones-posibles": None,
+            
+            # author del video o musica
+            "author": YouTube.author,
+            
+            # titulo de la descarga
+            "titulo": YouTube.title,
+            
+            # url del link
+            "url":YouTube.watch_url,
+        }
     
     return info
 
@@ -397,7 +415,8 @@ def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
                     if messagebox == None: print(informacion)
                     else:  Thread(target=messagebox.showinfo, args=("Exito", informacion)).start()
                 except KeyError:
-                    raise UnknownError()
+                    pass
+                    #raise UnknownError()
             else:
                 informacion = "[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3")
                 if messagebox == None: print(informacion)
