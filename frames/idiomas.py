@@ -49,6 +49,7 @@ class Idiomas:
             self.TextUnknownOS = "No se pudo identificar el OS en el que se esta trabajando."
             self.TextNotFoundThisFile = "Este idioma no tiene un archivo de ayuda disponible."
             self.TextNotExistsThisLenguaje = "Este idioma no esta registrado en la lista."
+            self.TextNotExistsResolution = "Esta resolucion no esta en disponible para este enlace: " 
             # textos del memu:
             self.ForMoreInformation = "Para mas informacion"
             self.InformationOfAutor = "Informacion del autor"
@@ -61,11 +62,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Descargar una playlist de musica"
             self.idiomasText = "Idiomas"
             self.exit = "Salir"
+            self.ajustes = "Ajustes"
             # textos frame1.py
             self.info = "\nPrograma creado en Python para \ndescargar videos de Youtube\n"
             self.url_video = "Url del video -> "
             self.dir_file = "Carpeta donde ingresar el archivo -> "
             self.download_text = "Descargar"
+            self.calidad_video_text = "Calidad de video -> " 
+            # textos frame2.py
+            self.info2 = "\nApartado para descargar \nuna playlist de video\n" 
+            self.url_playlist = "Url de la playlist -> " 
+            self.dir_file_playlist = "Carpeta donde almacenar\nel contenido de la play list ->" 
+            # textos frame3.py
+            self.info3 = "\nApartado para descargar\nuna cancion en formato mp3\n" 
+            # textos frame4.py 
+            self.info4 = "\nApartado para descargar una\nplaylist de musica en formato mp3\n" 
+            # textos setting.py
+            self.fecha_creacion = "Proyecto creado el {} por {}".format("10-10-10", "Maalfer")
+            self.disponible = "Disponible en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Este proyecto permite \ndescargar contenido de YouTube."
             
         elif self.en_US == self.idioma: # Ingles
             self.TextPortError = "The entered port is not in the range 1 - 2**16"
@@ -78,6 +93,7 @@ class Idiomas:
             self.TextUnknownOS = "Could not identify the OS being worked on"
             self.TextNotFoundThisFile = "This language does not have a help file available."
             self.TextNotExistsThisLenguaje = "This language is not registered in the list."
+            self.TextNotExistsResolution = "This resolution is not available for this link: " 
             # textos del memu:
             self.ForMoreInformation = "For more information"
             self.InformationOfAutor = "Author information"
@@ -90,11 +106,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Download a music playlist"
             self.idiomasText = "Languages"
             self.exit = "Exit"
+            self.ajustes = "settings"
             # textos frame1.py
             self.info = "\nProgram created in Python to \ndownload videos from Youtube\n"
             self.url_video = "video url -> "
             self.dir_file = "Folder where to put the file -> "
             self.download_text = "Download"
+            self.calidad_video_text = "video quality-> " 
+            # textos frame2.py
+            self.info2 = "\nSection to download \na video playlist\n" 
+            self.url_playlist = "playlist url -> " 
+            self.dir_file_playlist = "Folder to store\nthe content of the playlist ->" 
+            # textos frame3.py
+            self.info3 = "\nSection to download\na song in mp3 format\n" 
+            # textos frame4.py 
+            self.info4 = "\nSection to download a\nmp3 music playlist\n" 
+            # textos setting.py
+            self.fecha_creacion = "Project created on {} by {}".format("10-10-10", "Maalfer")
+            self.disponible = "Available in :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "This project allows you to \ndownload content from YouTube."
             
         elif self.zh_CN == self.idioma: # Chino
             self.TextPortError = "输入的端口不在 1 - 2**16 范围内"
@@ -107,6 +137,7 @@ class Idiomas:
             self.TextUnknownOS = "无法识别正在使用的操作系统"
             self.TextNotFoundThisFile = "该语言没有可用的帮助文件。"
             self.TextNotExistsThisLenguaje = "该语言未在列表中注册。"
+            self.TextNotExistsResolution = "此分辨率不适用于此链接: " 
             # textos del memu:
             self.ForMoreInformation = "想要查询更多的信息"
             self.InformationOfAutor = "作者信息"
@@ -119,11 +150,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "下载音乐播放列表"
             self.idiomasText = "语言"
             self.exit = "出去"
+            self.ajustes = "设置"
             # textos frame1.py
             self.info = "\n在 Python 中创建的程序 \n下载 Youtube 视频\n"
             self.url_video = "视频网址 -> "
             self.dir_file = "放置文件的文件夹 -> "
             self.download_text = "释放"
+            self.calidad_video_text = "视频质量 -> " 
+            # textos frame2.py
+            self.info2 = "\n下载部分 \n视频播放列表\n" 
+            self.url_playlist = "播放列表网址 -> " #
+            self.dir_file_playlist = "要存储的文件夹\n播放列表的内容 ->" 
+            # textos frame3.py
+            self.info3 = "\n下载部分\n一首mp3格式的歌曲\n" 
+            # textos frame4.py 
+            self.info4 = "\n下载部分\nmp3 音乐播放列表\n" 
+            # textos setting.py
+            self.fecha_creacion = "{} 在 {} 上创建的项目".format("10-10-10", "Maalfer")
+            self.disponible = "适用于 :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "该项目允许您\n从 YouTube 下载内容。"
             
         elif self.ru_RU == self.idioma: # Ruso 
             self.TextPortError = "Введенный порт не находится в диапазоне 1–2**16"
@@ -136,6 +181,7 @@ class Idiomas:
             self.TextUnknownOS = "Не удалось определить ОС, над которой ведется работа"
             self.TextNotFoundThisFile = "Для этого языка нет файла справки."
             self.TextNotExistsThisLenguaje = "Этот язык не зарегистрирован в списке."
+            self.TextNotExistsResolution = "Это разрешение недоступно для этой ссылки: " 
             # textos del memu:
             self.ForMoreInformation = "Для дополнительной информации"
             self.InformationOfAutor = "Информация об авторе"
@@ -147,12 +193,26 @@ class Idiomas:
             self.DownloadMusic = "Скачать один файл .mp3"
             self.DownloadMusicToPlaylist = "Скачать музыкальный плейлист"
             self.idiomasText = "Языки"
+            self.ajustes = "Ajustes"
             self.exit = "Выйти"
             # textos frame1.py
             self.info = "\nПрограмма, созданная на Python для \nскачать видео с ютуба\n"
             self.url_video = "URL-адрес видео -> "
             self.dir_file = "Папка куда положить файл -> "
             self.download_text = "Увольнять"
+            self.calidad_video_text = "качество видео -> " 
+            # textos frame2.py
+            self.info2 = "\nРаздел для скачивания\nвидео плейлист\n" 
+            self.url_playlist = "URL плейлиста -> " 
+            self.dir_file_playlist = "Папка для хранения\nсодержание плейлиста ->" 
+            # textos frame3.py
+            self.info3 = "\nРаздел для скачивания\nпесня в формате mp3\n" 
+            # textos frame4.py 
+            self.info4 = "\nРаздел для скачивания\nмузыкальный плейлист в формате mp3\n" 
+            # textos setting.py
+            self.fecha_creacion = "Проект создан {} пользователем {}".format("10-10-10", "Maalfer")
+            self.disponible = "Доступно в:\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Этот проект позволяет вам \nзагружать контент с YouTube."
             
         elif self.fr_FR == self.idioma: # Frances(Francia)
             self.TextPortError = "Le port saisi n'est pas dans la plage 1 - 2**16"
@@ -165,6 +225,7 @@ class Idiomas:
             self.TextUnknownOS = "Impossible d'identifier le système d'exploitation sur lequel on travaille"
             self.TextNotFoundThisFile = "Cette langue n'a pas de fichier d'aide disponible."
             self.TextNotExistsThisLenguaje = "Cette langue n'est pas enregistrée dans la liste."
+            self.TextNotExistsResolution = "Cette résolution n'est pas disponible pour ce lien: " 
             # textos del memu:
             self.ForMoreInformation = "Pour plus d'informations"
             self.InformationOfAutor = "Informations sur l'auteur"
@@ -177,11 +238,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Télécharger une playlist musicale"
             self.idiomasText = "langues"
             self.exit = "sortir"
+            self.ajustes = "Les paramètres"
             # textos frame1.py
             self.info = "\nProgramme créé en Python pour \ntélécharger des vidéos Youtube\n"
             self.url_video = "URL de la vidéo -> "
             self.dir_file = "Dossier où mettre le fichier -> "
             self.download_text = "Décharge"
+            self.calidad_video_text = "qualité vidéo -> " 
+            # textos frame2.py
+            self.info2 = "\nRubrique à télécharger \nune liste de lecture vidéo\n" 
+            self.url_playlist = "URL de la liste de lecture -> " 
+            self.dir_file_playlist = "Dossier à stocker\nle contenu de la playlist ->" 
+            # textos frame3.py
+            self.info3 = "\nRubrique à télécharger\nune chanson au format mp3\n" 
+            # textos frame4.py 
+            self.info4 = "\nRubrique pour télécharger un\nliste de lecture de musique mp3\n" 
+            # textos setting.py
+            self.fecha_creacion = "Projet créé par {} utilisateur {}".format("10-10-10", "Maalfer")
+            self.disponible = "Disponible dans :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Ce projet vous permet \nde télécharger du contenu depuis YouTube."
             
         elif self.ar_EG == self.idioma: # Arabe Egipto(el mas similar al estandar)
             self.TextPortError = "المنفذ الذي تم إدخاله ليس في النطاق 1 - 2 ** 16"
@@ -194,6 +269,7 @@ class Idiomas:
             self.TextUnknownOS = "تعذر تحديد نظام التشغيل قيد العمل"
             self.TextNotFoundThisFile = "لا يتوفر ملف تعليمات لهذه اللغة."
             self.TextNotExistsThisLenguaje = "هذه اللغة غير مسجلة في القائمة."
+            self.TextNotExistsResolution = "هذا القرار غير متاح لهذا الارتباط: " 
             # textos del memu:
             self.ForMoreInformation = "للمزيد من المعلومات"
             self.InformationOfAutor = "معلومات الكاتب"
@@ -206,11 +282,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "قم بتنزيل قائمة تشغيل الموسيقى"
             self.idiomasText = "اللغات"
             self.exit = "أخرج"
+            self.ajustes = "إعدادات"
             # textos frame1.py
             self.info = "\n برنامج تم إنشاؤه في Python من أجل \n تنزيل مقاطع فيديو YouTube \n"
             self.url_video = "رابط الفيديو -> "
             self.dir_file = "المجلد حيث يتم وضع الملف -> "
             self.download_text = "تسريح"
+            self.calidad_video_text = "جودة الفيديو -> " 
+            # textos frame2.py
+            self.info2 = "\nقسم للتحميل \nقائمة تشغيل الفيديو\n" 
+            self.url_playlist = "عنوان url لقائمة التشغيل -> " 
+            self.dir_file_playlist = "مجلد للتخزين\nمحتوى قائمة التشغيل ->" 
+            # textos frame3.py
+            self.info3 = "\nقسم للتحميل\nأغنية بتنسيق mp3\n" 
+            # textos frame4.py 
+            self.info4 = "\nقسم للتحميل أ\nقائمة تشغيل موسيقى mp3\n" 
+            # textos setting.py
+            self.fecha_creacion = "تم إنشاء المشروع في {} بواسطة {}".format("10-10-10", "Maalfer")
+            self.disponible = "متوفر في :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "يتيح لك هذا المشروع \n تنزيل المحتوى من YouTube."
             
         elif self.ja_JP == self.idioma: # Japones
             self.TextPortError = "入力されたポートは 1 から 2**16 の範囲にありません"
@@ -223,6 +313,7 @@ class Idiomas:
             self.TextUnknownOS = "動作しているOSを特定できませんでした"
             self.TextNotFoundThisFile = "この言語には、利用できるヘルプ ファイルがありません。"
             self.TextNotExistsThisLenguaje = "この言語はリストに登録されていません。"
+            self.TextNotExistsResolution = "この解像度は、このリンクでは利用できません: "
             # textos del memu:
             self.ForMoreInformation = "詳細については"
             self.InformationOfAutor = "著者情報"
@@ -235,11 +326,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "音楽プレイリストをダウンロードする"
             self.idiomasText = "言語"
             self.exit = "外出"
+            self.ajustes = "設定"
             # textos frame1.py
             self.info = "\nPython で作成されたプログラム \nユーチューブの動画をダウンロード\n"
             self.url_video = "動画の URL -> "
             self.dir_file = "ファイルを置くフォルダ -> "
             self.download_text = "放電"
+            self.calidad_video_text = "ビデオ品質 -> " 
+            # textos frame2.py
+            self.info2 = "\nダウンロードするセクション \nビデオのプレイリスト\n" 
+            self.url_playlist = "再生リストの URL -> " #
+            self.dir_file_playlist = "格納するフォルダ\nプレイリストの内容 ->" 
+            # textos frame3.py
+            self.info3 = "\nダウンロードするセクション\nmp3形式の曲\n" 
+            # textos frame4.py 
+            self.info4 = "\nダウンロードするセクション\nmp3 音楽プレイリスト\n" 
+            # textos setting.py
+            self.fecha_creacion = "{} によって {} に作成されたプロジェクト".format("10-10-10", "Maalfer")
+            self.disponible = "で利用可能 :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "このプロジェクトでは、\nYouTube からコンテンツをダウンロードできます。."
             
         elif self.de_DE == self.idioma: # Aleman(Alemania)
             self.TextPortError = "Der eingegebene Port liegt nicht im Bereich 1 - 2**16"
@@ -252,6 +357,7 @@ class Idiomas:
             self.TextUnknownOS = "Das Betriebssystem, an dem gearbeitet wird, konnte nicht identifiziert werden"
             self.TextNotFoundThisFile = "Für diese Sprache ist keine Hilfedatei verfügbar."
             self.TextNotExistsThisLenguaje = "Diese Sprache ist nicht in der Liste registriert."
+            self.TextNotExistsResolution = "Diese Auflösung ist für diesen Link nicht verfügbar: " 
             # textos del memu:
             self.ForMoreInformation = "Für mehr Informationen"
             self.InformationOfAutor = "Informationen zum Autor"
@@ -264,11 +370,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Laden Sie eine Musikwiedergabeliste herunter"
             self.idiomasText = "Sprachen"
             self.exit = "Hinausgehen"
+            self.ajustes = "Einstellungen"
             # textos frame1.py
-            self.info = "\nPrograma creado en Python para \ndescargar videos de Youtube\n"
-            self.url_video = "Url del video -> "
-            self.dir_file = "Carpeta donde ingresar el archivo -> "
-            self.download_text = "Descargar"
+            self.info = "\nIn Python erstelltes Programm zu \nYouTube-Videos herunterladen\n"
+            self.url_video = "Video-URL -> "
+            self.dir_file = "Ordner, in dem die Datei abgelegt werden soll -> "
+            self.download_text = "Entladung"
+            self.calidad_video_text = "Videoqualität -> " 
+            # textos frame2.py
+            self.info2 = "\nRubrik zum Download \neine Video-Playlist\n" 
+            self.url_playlist = "Wiedergabelisten-URL -> " 
+            self.dir_file_playlist = "Ordner zu speichern\nden Inhalt der Playlist->" 
+            # textos frame3.py
+            self.info3 = "\nRubrik zum Download\nein Lied im mp3-Format\n" 
+            # textos frame4.py 
+            self.info4 = "\nAbschnitt zum Herunterladen a\nMP3-Musik-Playlist\n" 
+            # textos setting.py
+            self.fecha_creacion = "Projekt erstellt am {} von {}".format("10-10-10", "Maalfer")
+            self.disponible = "Verfügbar in :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Mit diesem Projekt können Sie \nInhalte von YouTube herunterladen."
                         
         elif self.esperanto == self.idioma: # esperanto
             self.TextPortError = "La enigita haveno ne estas en la intervalo 1 - 2**16"
@@ -281,6 +401,7 @@ class Idiomas:
             self.TextUnknownOS = "Ne eblis identigi la OS prilaborata"
             self.TextNotFoundThisFile = "Ĉi tiu lingvo ne havas disponeblan helpdosieron."
             self.TextNotExistsThisLenguaje = "Ĉi tiu lingvo ne estas registrita en la listo."
+            self.TextNotExistsResolution = "Ĉi tiu rezolucio ne disponeblas por ĉi tiu ligo: " 
             # textos del memu:
             self.ForMoreInformation = "Por pliaj informoj"
             self.InformationOfAutor = "Aŭtoraj Informoj"
@@ -293,11 +414,25 @@ class Idiomas:
             self.DownloadMusicToPlaylist = "Elŝutu muzikliston"
             self.idiomasText = "Lingvoj"
             self.exit = "Eliru"
+            self.ajustes = "Agordoj"
             # textos frame1.py
-            self.info = "\nPrograma creado en Python para \ndescargar videos de Youtube\n"
-            self.url_video = "Url del video -> "
-            self.dir_file = "Carpeta donde ingresar el archivo -> "
-            self.download_text = "Descargar"
+            self.info = "\nProgramo kreita en Python al \nelŝutu videojn de Youtube\n"
+            self.url_video = "video URL -> "
+            self.dir_file = "Dosierujo kie meti la dosieron -> "
+            self.download_text = "Malŝarĝo"
+            self.calidad_video_text = "videokvalito-> " 
+            # textos frame2.py
+            self.info2 = "\nSekcio por elŝuti \nvideolisto\n" 
+            self.url_playlist = "url de la ludlisto -> " 
+            self.dir_file_playlist = "Dosierujo por stoki\nla enhavo de la ludlisto ->" 
+            # textos frame3.py
+            self.info3 = "\nSekcio por elŝuti\nkanto en mp3-formato\n" 
+            # textos frame4.py 
+            self.info4 = "\nSekcio por elŝuti a\nmp3-muzika ludlisto\n" 
+            # textos setting.py
+            self.fecha_creacion = "Projekto kreita je {} de {}".format("10-10-10", "Maalfer")
+            self.disponible = "Havebla en :\n{}\n{}".format("https://github.com/desmonHak/Youtube_Downloader", "https://github.com/Maalfer/Youtube_Downloader")
+            self.aboutThis = "Ĉi tiu projekto permesas al vi \nelŝuti enhavon de Jutubo."
             
         else:
             raise Exception("Este idioma no se encuentra {}".format(self.idioma))

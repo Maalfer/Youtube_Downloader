@@ -5,16 +5,16 @@
 
     "autor": {
         "usuario": "Mario",
-        "github": "https://github.com/Maalfer?tab=repositories"
+        "github": "https://github.com/Maalfer/"
     },
 
     "contribuidores": [{
             "usuario": "desmon",
-            "github": "https://github.com/desmonHak/Youtube_Downloader"
+            "github": "https://github.com/desmonHak/"
         },
         {
             "usuario": "Mario",
-            "github": "https://github.com/Maalfer?tab=repositories"
+            "github": "https://github.com/Maalfer/"
         }
     ]
 }

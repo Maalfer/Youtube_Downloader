@@ -2,8 +2,20 @@ from pytube import YouTube, exceptions, Playlist
 from pytube.cli import on_progress
 from os import rename, path, remove, listdir
 from socket import gethostbyaddr, gaierror
+from threading import Thread
+from .error import ErrorDeConexion, UnknownError, UrlNotFound, NotExistsResolution
 
-from .error import ErrorDeConexion, UnknownError, UrlNotFound
+calidades_video_posibles = [
+    "144p", 
+    "240p",
+    "360p",
+    "480p",
+    "720p",  # HD
+    "1080p", # HD
+    "1440p", # 2K
+    "2160p", # 4K
+    "4320p"  # 8K
+]
 
 def GetSize(stream):
     """_summary_
@@ -46,7 +58,30 @@ def delFile(ruta, extension=".3gpp"):
     except FileNotFoundError:
         pass
                 
+def chek_calidad(calidad, url):
+    
+    calidades = get_calidades(url)
+    if calidad not in calidades:
+        raise NotExistsResolution(calidad, calidades)
+    else: True
 
+def get_calidades(url):
+    try:
+        streams = YouTube(url).streams
+        calidades = []
+        
+        for stream in streams:
+            temp = stream.resolution
+            if temp == None:
+                pass
+            elif temp in calidades:
+                pass
+            else: 
+                calidades.append(stream.resolution)
+    except exceptions.RegexMatchError:
+        raise UrlNotFound(url)
+    
+    return calidades
 
 def GetInfo(YouTube):
     """_summary_
@@ -60,24 +95,42 @@ def GetInfo(YouTube):
     Returns:
         dict: retorna un valor de tipo diccionario con informacion hacerla de la url introducida
     """
-    
-    info = {
-        
-        # si tiene restricion de edad True:
-        "retricion-edad":YouTube.age_restricted,
-        
-        # da informacion acerca de las distintas resoluciones:
-        "resoluciones-posibles": YouTube.streams,
-        
-        # author del video o musica
-        "author": YouTube.author,
-        
-        # titulo de la descarga
-        "titulo": YouTube.title,
-        
-        # url del link
-        "url":YouTube.watch_url,
-    }
+    try:
+        info = {
+            
+            # si tiene restricion de edad True:
+            "retricion-edad":YouTube.age_restricted,
+            
+            # da informacion acerca de las distintas resoluciones:
+            "resoluciones-posibles": YouTube.streams,
+            
+            # author del video o musica
+            "author": YouTube.author,
+            
+            # titulo de la descarga
+            "titulo": YouTube.title,
+            
+            # url del link
+            "url":YouTube.watch_url,
+        }
+    except KeyError:
+                info = {
+            
+            # si tiene restricion de edad True:
+            "retricion-edad":YouTube.age_restricted,
+            
+            # da informacion acerca de las distintas resoluciones:
+            "resoluciones-posibles": None,
+            
+            # author del video o musica
+            "author": YouTube.author,
+            
+            # titulo de la descarga
+            "titulo": YouTube.title,
+            
+            # url del link
+            "url":YouTube.watch_url,
+        }
     
     return info
 
@@ -92,43 +145,59 @@ def PrintInfoStream(stream):
     Returns:
         dict: Se retorna un diccionario con la informacion hacerla del stream
     """
-    try:
-        fps = stream.fps
-    except AttributeError:
-        fps = 0 # si es musica no tiene fps xd
-    print(stream)
-    try:
-        info = {
-            
-            "size-gb":stream.filesize_gb,
-            "size-mb":stream.filesize_mb,
-            "size-kb":stream.filesize_kb,
-            "name-default":stream.default_filename,
-            "codecs":stream.codecs,
-            "codecs-audio":stream.audio_codec,
-            "tipo":stream.type,
-            "resolucion":stream.resolution,
-            "fps":fps,
-     
-        }
-    except KeyError:
+    if stream != None:
+        try:
+            fps = stream.fps
+        except AttributeError:
+            fps = 0 # si es musica no tiene fps xd
+        print(stream)
+        try:
+            try:
                 info = {
+                    
+                    "size-gb":stream.filesize_gb,
+                    "size-mb":stream.filesize_mb,
+                    "size-kb":stream.filesize_kb,
+                    "name-default":stream.default_filename,
+                    "codecs":stream.codecs,
+                    "codecs-audio":stream.audio_codec,
+                    "tipo":stream.type,
+                    "resolucion":stream.resolution,
+                    "fps":fps,
             
+                }
+            except KeyError:
+                info = {
+                    
+                    "size-gb":0,
+                    "size-mb":0,
+                    "size-kb":0,
+                    "name-default":stream.default_filename,
+                    "codecs":stream.codecs,
+                    "codecs-audio":stream.audio_codec,
+                    "tipo":stream.type,
+                    "resolucion":stream.resolution,
+                    "fps":fps,
+            
+                }
+        except KeyboardInterrupt:
+            pass
+                    
+        for key in info.keys():
+            print("{} : {}". format(key, info[key]))
+        return info
+    else:
+        return {
             "size-gb":0,
             "size-mb":0,
             "size-kb":0,
-            "name-default":stream.default_filename,
-            "codecs":stream.codecs,
-            "codecs-audio":stream.audio_codec,
-            "tipo":stream.type,
-            "resolucion":stream.resolution,
-            "fps":fps,
-     
+            "name-default":None,
+            "codecs":None,
+            "codecs-audio":None,
+            "tipo":None,
+            "resolucion":None,
+            "fps":None,
         }
-                
-    for key in info.keys():
-        print("{} : {}". format(key, info[key]))
-    return info
 
 def PrintAllInfoStream(Streams):
     """_summary_
@@ -168,7 +237,7 @@ def PrintInfo(info):
             print("{} : {}". format(key, info[key]))
     return 0
 
-def downloadPlayList(url, carpeta):
+def downloadPlayList(url, carpeta, messagebox=None):
     """_summary_
     
         Esta funcion permite descargar una PlayList en formato mp3.
@@ -191,7 +260,10 @@ def downloadPlayList(url, carpeta):
     delFile(carpeta)
     try:
         playlist = Playlist(url)
-        print('Numero de videos en la playlist: %s' % len(playlist.video_urls))
+        informacion = 'Numero de videos en la playlist: %s' % len(playlist.video_urls)
+        if messagebox == None: print(informacion)
+        else: messagebox.showinfo("Exito", informacion)
+        
         for video_url in playlist.video_urls:
             music = YouTube(video_url, on_progress_callback=on_progress)
             PrintInfo(GetInfo(music))
@@ -214,13 +286,16 @@ def downloadPlayList(url, carpeta):
                 print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
                 
         delFile(carpeta)
+        informacion =  "playlist de musica descargada."
+        if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
+        else: print(informacion)
         # retorna el valor 0 si todo es correcto
         return 0
     except exceptions.RegexMatchError:
         raise UrlNotFound(url)
 
 
-def downloadArchivoMusica(url, carpeta):
+def downloadArchivoMusica(url, carpeta, messagebox=None):
     """_summary_
     
         Esta funcion permite descargar una cancion en formato mp3.
@@ -258,6 +333,9 @@ def downloadArchivoMusica(url, carpeta):
             print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
                 
         delFile(carpeta)
+        informacion =  "descarga finalizada."
+        if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
+        else: print(informacion)
         # retorna 0 si todo es correcto
         return 0
     except exceptions.RegexMatchError:
@@ -265,7 +343,7 @@ def downloadArchivoMusica(url, carpeta):
         
 
         
-def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None):
+def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None, res=None):
     """_summary_
     
         Esta funcion recibe un enlace en forma de string del video a descargar en maxima calida.
@@ -276,9 +354,10 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None):
         terminal.
         
     Args:
-        enlace (str): _description_
-        carpetaDescarga (str, optional): _description_. Defaults to ".".
-        messagebox (Tk, optional): _description_. Defaults to None.
+        enlace (str): url de donde descargar el video
+        carpetaDescarga (str, optional): carpeta donde guardar el archivo descargado. Defaults to ".".
+        messagebox (Tk, optional): instancia padre. Defaults to None.
+        res (str, optional): calidad de video a descargar, por defecto, la maxima
 
     Raises:
         UrlNotFound: La url no se pudo encontrar
@@ -292,17 +371,28 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None):
         video = YouTube(enlace, on_progress_callback=on_progress)
         
         info = GetInfo(video)
-        size = PrintInfoStream(info["resoluciones-posibles"].get_highest_resolution())
+        if res == None: size = PrintInfoStream(info["resoluciones-posibles"].get_highest_resolution())
+        else: 
+            chek_calidad(res, enlace)
+            size = PrintInfoStream(info["resoluciones-posibles"].filter(res=res, progressive=True).first())
         PrintInfo(info)
 
         informacion = "Se va a descargar el video con nombre \"{}\" el cual pesa {} MB.".format(info["titulo"], size["size-mb"])
-        if messagebox != None: messagebox.showinfo("Exito", informacion)
+        if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
         else: print(informacion)
-
-        descarga = video.streams.get_highest_resolution()
-        descarga.download(carpetaDescarga)
+        
+        if res == None: descarga = video.streams.get_highest_resolution()
+        else: 
+            for i in range(0, int(len(calidades_video_posibles)/2)):
+                descarga = video.streams.filter(res=res, progressive=False).first()
+                if descarga != None: break
+                else: descarga = video.streams.filter(res=calidades_video_posibles[int(len(calidades_video_posibles)/2+1)-1], progressive=True).first()
+                print(calidades_video_posibles[int(len(calidades_video_posibles)/2+1)-i], descarga)
+            if descarga == None: descarga = video.streams.get_highest_resolution()
+            
+        Thread(target=descarga.download, args=(carpetaDescarga,), daemon=False).start()
         informacion =  "El video fue descargado con exito en el directorio actual."
-        if messagebox != None: messagebox.showinfo("Exito", informacion)
+        if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
         else: print(informacion)
         return 0 # 0 si todo salio bien
         
@@ -310,14 +400,16 @@ def descargarUnUnicoVideo(enlace, carpetaDescarga=".", messagebox=None):
         raise UrlNotFound(enlace)
 
             
-def descargarPlaylistVideo(url, carpeta="."):
+def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
     """_summary_
     
-    Descarga videos de una playlist.
+    Descarga videos de una playlist. Si se le especifica una calidad, intentara descargar todos los videos en esa calidad,
+    en el caso de que no pueda ser ya que ese video no soporte esa calidad, se descargar con la mejor.
 
     Args:
-        url (str): _description_
-        carpeta (str): _description_
+        url (str): url de la playlist a usar
+        carpeta (str): Ruta de la carpeta en la que guardar el archivo
+        res (str, optional): Resolucion con la que descargar los videos, por defecto, la mejor calidad disponible
 
     Raises:
         UnknownError: Se muestra al ocurrir un error desconocido
@@ -335,13 +427,32 @@ def descargarPlaylistVideo(url, carpeta="."):
             PrintInfo(GetInfo(music))
             if path.exists(carpeta+music.title + ".mp4") == False:  # si el archivo no existe descargarlo
                 try:
-                    music = music.streams.get_highest_resolution()
-                    music.download(carpeta)
-                    print("[+] Archivo descargado -> {}".format(carpeta+music.title + ".mp4"))
+                    try:
+                        # si el video selecionado no tiene la calidad que se escogio disponible, se descarga con la mayor calidad
+                        if res == None: descarga = music.streams.get_highest_resolution()
+                        else: 
+                            try:
+                                chek_calidad(res, url)
+                            except (UrlNotFound, exceptions.RegexMatchError): pass
+                            for i in range(0, int(len(calidades_video_posibles)/2)):
+                                descarga = music.streams.filter(res=res, progressive=False).first()
+                                if music != None: break
+                                else: descarga = music.streams.filter(res=calidades_video_posibles[int(len(calidades_video_posibles)/2+1)-1], progressive=True).first()
+                                print(calidades_video_posibles[int(len(calidades_video_posibles)/2+1)-i], descarga)
+                            if descarga == None: descarga = music.streams.get_highest_resolution()
+                    except NotExistsResolution:
+                        descarga = music.streams.get_highest_resolution()
+                    Thread(target=descarga.download, args=(carpeta,), daemon=False).start()
+                    informacion = "[+] Archivo descargado -> {}".format(carpeta+descarga.title + ".mp4")
+                    if messagebox == None: print(informacion)
+                    else:  Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
                 except KeyError:
-                    raise UnknownError()
+                    pass
+                    #raise UnknownError()
             else:
-                print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
+                informacion = "[!] Ya existe el archivo -> {}".format(carpeta+descarga.title + ".mp3")
+                if messagebox == None: print(informacion)
+                else:  Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
         # Todo salio correcto:            
         return 0
     except exceptions.RegexMatchError:

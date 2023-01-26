@@ -24,9 +24,7 @@ class Frame6:
         
         if load_json:
             ruta = calcular_file(__file__, "config-GUI")
-            print("[[ ",ruta)
             config_data = load_file(ruta)
-            print(config_data)
             
             color_fondo = config_data["color-background"]
             tamano_ventana = config_data["size"]
@@ -51,7 +49,7 @@ class Frame6:
         frame.config(
             width=tamano_ventana[0], 
             height=tamano_ventana[1], # Cambiar tamano del Frame 
-            bg="white",           # Cambiando color de fondo
+            #bg="white",           # Cambiando color de fondo
             bd=1,          # Cambiando grosor del borde
             relief="sunken",        # Cambiar el tipo de borde
             cursor="tcross"         # Cambiar el cursor
@@ -70,8 +68,14 @@ class Frame6:
         
         self.imagenes = Imagenes()
         foto = self.imagenes.addImagenes(self.imagenes.youtubePNG, frame)
-        foto.grid()
+        foto.place(relx=0.30, rely=0.05)
         
-    
+        self.EqtiquetaInformacion1 = Label(self.Frame, text=self.InstanciaPadre.idiomas.fecha_creacion)
+        self.EqtiquetaInformacion1.place(relx=0.15, rely=0.4)        
+        self.EqtiquetaInformacion2 = Label(self.Frame, text=self.InstanciaPadre.idiomas.disponible)
+        self.EqtiquetaInformacion2.place(relx=0.03, rely=0.5)   
+        self.EqtiquetaInformacion2 = Label(self.Frame, text=self.InstanciaPadre.idiomas.aboutThis)
+        self.EqtiquetaInformacion2.place(relx=0.2, rely=0.7)       
+
     def killThisWindows(self):
         self.Frame.destroy()
