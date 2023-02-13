@@ -5,6 +5,8 @@ from frames.root import root, ruta
 from frames.load_config import load_file, calcular_file
 from frames.idiomas import Idiomas
 
+from get_hash import get_directory, get_hash, write_dict_hash_dir, cheack_updates
+
 information = literal_eval(open("information.json", "r").read())
 
 __version__ = information["version"]
@@ -15,6 +17,18 @@ __contribuidores__ = information["contribuidores"]
 
 # Codigo principal a ejecutar:
 if __name__ == "__main__":
+    
+    print("Comprobando actualizaciones....")
+    tree_dir = get_directory(debug=False)
+    #print_tree(tree_dir)
+    
+    dict_hash_dir = get_hash(tree_dir)
+    #print_dict_hash_dir(dict_hash_dir)
+    write_dict_hash_dir(dict_hash_dir)
+    
+    if cheack_updates():
+        print("Hay una nueva version de este software!!!")
+    
     print("\n"+"="*30)
     print ("version del software -> {}".format(__version__))
     print("="*30)
