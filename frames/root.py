@@ -1,4 +1,4 @@
-from sys import platform, version
+from sys import platform, version, exit
 
 if version[0] == "3":
     from tkinter import messagebox, Tk, Menu, TclError, Canvas

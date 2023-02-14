@@ -1,30 +1,9 @@
 from ast import literal_eval
 from sys import platform
 
+
 from .error import UnknownOS, NotFoundThisFile
 
-def calcular_file(file, ruta):
-    
-    # El archivo root.py tiene su archivo root.json
-    file = file.split(".")
-    file[-1] ="json" # cambiamos el .py por .json
-    file = ".".join(file)
-    
-    # convertimos la ruta recibida a la plataforma para la plataforma selecionada para evitar problemas
-    ruta = calcular_ruta_format_linux_to_win(ruta)
-    
-    if platform == "win32": splas = "\\"
-    elif platform == "linux" or platform == "linux2": splas = "/"
-    else: raise UnknownOS(platform)
-    
-    # el nombre de frames lo cambiamos por el de la carpeta config-GUI
-    _ruta = file.split(splas)
-    _ruta[-2] = ruta
-    ruta = splas.join(_ruta)
-    
-    return ruta 
-   
-        
 def calcular_ruta_format_linux_to_win(ruta):
     """_summary_
         trasmoforma una ruta de linux a windows(sustituir las barras)
@@ -35,6 +14,43 @@ def calcular_ruta_format_linux_to_win(ruta):
     if platform == "win32": return "\\".join(ruta.split("/"))
     elif platform == "linux" or platform == "linux2": return "/".join(ruta.split("/"))
     else: raise UnknownOS(platform)
+
+def calcular_file(file, ruta, rutaWin="C:\\Users\\{}\\Youtube_Downloader"):
+    
+    
+    print(ruta)
+    # El archivo root.py tiene su archivo root.json
+    file = file.split(".")
+    file[-1] ="json" # cambiamos el .py por .json
+    file = ".".join(file)
+
+    
+    
+    
+    if platform == "win32": 
+        from os.path import expanduser
+        print(expanduser('~').split("\\")[-1])
+        rutaWin = rutaWin.format(expanduser('~').split("\\")[-1])
+        ruta = calcular_ruta_format_linux_to_win(rutaWin)+"\\"+ruta+ "\\" + file.split("\\")[-1]
+        print(ruta)
+        print(rutaWin)
+
+        #ruta = rutaWin + "\\" + "config-GUI" + "\\" + file.split("\\")[-1]
+        #print(ruta)
+    
+    elif platform == "linux" or platform == "linux2": 
+        # convertimos la ruta recibida a la plataforma para la plataforma selecionada para evitar problemas
+        ruta = calcular_ruta_format_linux_to_win(ruta)
+        
+        # el nombre de frames lo cambiamos por el de la carpeta config-GUI
+        _ruta = file.split("/")
+        _ruta[-2] = ruta
+        ruta = "/".join(_ruta)
+        
+    else: raise UnknownOS(platform)
+    
+    return ruta 
+   
         
 
 def load_file(file):

@@ -1,5 +1,6 @@
 from sys import platform
 
+
 from .error import UnknownOS, NotFoundThisFile, NotExistsThisLenguaje
 
 class Textos():
@@ -15,7 +16,11 @@ class Textos():
         file[0] = file[0]+"-"+self.idioma
         file = ".".join(file)
         try:
-            self.file = open(self.getFileRuta(__file__, file), "r")
+            try:
+                self.file = open(self.getFileRuta(__file__, file), "r", encoding="utf-8")
+            except FileNotFoundError: 
+                from .load_config import calcular_file
+                self.file = open("\\".join(calcular_file(__file__, "frames\\data").split("\\")[:-1])+"\\"+file, "r", encoding="utf-8")
             self.text = self.file.read()
             self.file.close()
         except FileNotFoundError:

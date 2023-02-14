@@ -22,7 +22,7 @@
     "9b1b5e4a3830e40e230ca2eb98b97f58": "./frames/error.py",
     "8f9e60f642194a546f1dd1e872b3a0f1": "./frames/helpText.py",
     "1d526899df8d61a981f9e4af370e7529": "./frames/load_config.py",
-    "a37d8f672eef930dfdb4651a44270347": "./frames/root.py",
+    "a505d0814b1858da5811e3f30bdd5b34": "./frames/root.py",
     "3b5b4347021d2a4b9388f28a7c6bb09b": "./frames/frameHelp.py",
     "a73bd8af446221479fcbd4c9cc4a410d": "./frames/idiomas.py",
     "d300dfb04bcf6dc48480addaab8642ca": "./config-GUI/frame1.json",
@@ -37,6 +37,6 @@
     "19472cca3c0de4bde40b4c0abe9c0588": "./.gitignore",
     "aa3fd789a9dc607206d64ab8343ce7f0": "./requirements.txt",
     "c307b9e1082b531e292a55c5e1dcb4bd": "./information.json",
-    "c95ea6d5da9505663fb58fa33816cd1d": "./Youtube_Downloader.py",
+    "097df437022a4e32ddc4c9ca4dae2e88": "./Youtube_Downloader.py",
     "1ebbd3e34237af26da5dc08a4e440464": "./LICENSE.md"
 }

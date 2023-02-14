@@ -46,8 +46,13 @@ if __name__ == "__main__":
     print("="*30+"\n")
 
     try:
-        
+
         ruta = calcular_file(ruta, "config-GUI")
+        
+        from os import chdir
+        from sys import platform
+        if platform == "win32": 
+            chdir("\\".join(ruta.split("\\")[:-2]))
         print("[[ ",ruta)
         config_data = load_file(ruta)
         print(config_data)
