@@ -13,6 +13,11 @@ Tenemos disponible la versión .exe (la que viene comprimida en formato zip) y l
 Los vídeos de YouTube se descargarán en el mismo directorio donde se encuentra ubicado el programa.
 
 ---
+# Para Windows
+
+Haga doble click sobre `install.bat`, esto deberia empezar la instalacion del software en windows.
+
+---
 
 ### Clonar con:
 
