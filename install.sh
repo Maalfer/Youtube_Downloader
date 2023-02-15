@@ -1,8 +1,8 @@
 #! /bin/sh
 
 clear
-#sudo apt-get update -y && sudo apt-get upgrade -y
-#sudo apt-get install tree python3 python3-pip -y
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt-get install tree python3 python3-pip -y
 
 echo "[*] Instalando dependencias: "
 pip3 install -r requirements.txt
