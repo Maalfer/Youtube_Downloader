@@ -23,7 +23,7 @@
     "31750cf08be67aa7f7af4f5564341d00": ".\\frames\\helpText.py",
     "fa27134bfe5aa58d2db39fa7e4824c20": ".\\frames\\idiomas.py",
     "a08cad2d3afbb2fdaf6cf16f3147d75f": ".\\frames\\imagenes.py",
-    "5989687c208bbe3185cc18e14f8df8bb": ".\\frames\\lib_download.py",
+    "08e66e721f9208ede570b742631b975e": ".\\frames\\lib_download.py",
     "8c88c6e8d988a9f3d387ba7fa0f6a7ee": ".\\frames\\load_config.py",
     "e1e1c1e72efe8b7cecdd31d0325cc391": ".\\frames\\root.py",
     "e15e146e50a7187d1a6c4a84368a1055": ".\\frames\\serverHTTP.py",
@@ -40,6 +40,6 @@
     "e62637ea8a114355b985fd86c9ffbd6e": ".\\LICENSE.md",
     "e364748ebc8140d1de315589e23ca02e": ".\\README.md",
     "78ff8db0c5340f025ca4467c8d7125d3": ".\\requirements.txt",
-    "1cb5b98cab078dfc10b3dad151b1e2f0": ".\\Youtube_Downloader.exe",
+    "9959c2b3b9495c9f6119a24eec16185a": ".\\Youtube_Downloader.exe",
     "127c91d7316aa316d5907f027a70c215": ".\\Youtube_Downloader.py"
 }
