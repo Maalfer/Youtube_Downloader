@@ -279,9 +279,10 @@ def downloadPlayList(url, carpeta, messagebox=None):
                         try:
                             remove(carpeta+music.title+".3gpp") # elimina el archivo .3gpp
                         except (FileNotFoundError, OSError):
-                            pass # si no existe, ya fue eliminado anetiormente
+                            print("por algun motivo no se pudo eliminar {}".format(carpeta+music.title+".3gpp")) # si no existe, ya fue eliminado anetiormente
                 except KeyError:
-                    raise UnknownError()
+                    print("Ocurrio un Error inexperado")
+                    #raise UnknownError()
             else:
                 print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
                 
@@ -326,9 +327,11 @@ def downloadArchivoMusica(url, carpeta, messagebox=None):
                     try:
                         remove(carpeta+music.title+".3gpp") # elimina el archivo .3gpp
                     except (FileNotFoundError, OSError):
-                        pass # si no existe, ya fue eliminado anetiormente
+                        print("por algun motivo no se pudo eliminar {}".format(carpeta+music.title+".3gpp"))
+                        # si no existe, ya fue eliminado anetiormente
             except KeyError:
-                raise UnknownError()
+                print("Ocurrio un Error inexperado")
+                #raise UnknownError()
         else:
             print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
                 
@@ -447,7 +450,7 @@ def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
                     if messagebox == None: print(informacion)
                     else:  Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
                 except KeyError:
-                    pass
+                    print("Ocurrio un Error inexperado")
                     #raise UnknownError()
             else:
                 informacion = "[!] Ya existe el archivo -> {}".format(carpeta+descarga.title + ".mp3")

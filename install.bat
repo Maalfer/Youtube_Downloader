@@ -19,7 +19,7 @@ set name=Youtube_Downloader
 
 
 :: Empaqueta el script en un archivo ejecutable y define el icono para el archivo.
-::pyinstaller --onefile -i imagenes\youtube.ico Youtube_Downloader.py
+pyinstaller --onefile -i imagenes\youtube.ico Youtube_Downloader.py
 echo [*] Archivo .exe generado
 
 :: Mueve el archivo ejecutable generado al directorio actual.
