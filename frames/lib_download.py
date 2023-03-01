@@ -4,7 +4,7 @@ from os import rename, path, remove, listdir
 from socket import gethostbyaddr, gaierror
 from threading import Thread
 from .error import ErrorDeConexion, UnknownError, UrlNotFound, NotExistsResolution
-
+from http.client import IncompleteRead
 calidades_video_posibles = [
     "144p", 
     "240p",
@@ -263,30 +263,34 @@ def downloadPlayList(url, carpeta, messagebox=None):
         informacion = 'Numero de videos en la playlist: %s' % len(playlist.video_urls)
         if messagebox == None: print(informacion)
         else: messagebox.showinfo("Exito", informacion)
-        
-        for video_url in playlist.video_urls:
-            music = YouTube(video_url, on_progress_callback=on_progress)
-            PrintInfo(GetInfo(music))
-            if path.exists(carpeta+music.title + ".mp3") == False:  # si el archivo no existe descargarlo
-                try:
-                    music = music.streams.filter().first()
-                    out_file = music.download(carpeta)
-                    base, ext = path.splitext(out_file)
-                    new_file = base + '.mp3'
-                    try:
-                        rename(out_file, new_file)
-                    except FileExistsError: # si el archivo .mp3 ya existe
+        for i in range(0, 3):
+            try:
+                for video_url in playlist.video_urls:
+                    music = YouTube(video_url, on_progress_callback=on_progress)
+                    PrintInfo(GetInfo(music))
+                    if path.exists(carpeta+music.title + ".mp3") == False:  # si el archivo no existe descargarlo
                         try:
-                            remove(carpeta+music.title+".3gpp") # elimina el archivo .3gpp
-                        except (FileNotFoundError, OSError):
-                            print("por algun motivo no se pudo eliminar {}".format(carpeta+music.title+".3gpp")) # si no existe, ya fue eliminado anetiormente
-                except KeyError:
-                    print("Ocurrio un Error inexperado")
-                    #raise UnknownError()
-            else:
-                print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
-                
-        delFile(carpeta)
+                            music = music.streams.filter()
+                            print(music)
+                            music = music.first()
+                            out_file = music.download(carpeta)
+                            base, ext = path.splitext(out_file)
+                            new_file = base + '.mp3'
+                            try:
+                                rename(out_file, new_file)
+                            except FileExistsError: # si el archivo .mp3 ya existe
+                                try:
+                                    remove(carpeta+music.title+".3gpp") # elimina el archivo .3gpp
+                                except (FileNotFoundError, OSError):
+                                    pass # si no existe, ya fue eliminado anetiormente
+                            delFile(carpeta)
+                        except KeyError:
+                            pass
+                            #raise UnknownError()
+                    else:
+                        print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
+            except IncompleteRead:
+                print("[*] Ocurrio un error intentando descargar esta cancion, se va a proceder a hacer el intento numero: {} de {}".format(i, 3))
         informacion =  "playlist de musica descargada."
         if messagebox != None: Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
         else: print(informacion)
@@ -327,11 +331,9 @@ def downloadArchivoMusica(url, carpeta, messagebox=None):
                     try:
                         remove(carpeta+music.title+".3gpp") # elimina el archivo .3gpp
                     except (FileNotFoundError, OSError):
-                        print("por algun motivo no se pudo eliminar {}".format(carpeta+music.title+".3gpp"))
-                        # si no existe, ya fue eliminado anetiormente
+                        pass # si no existe, ya fue eliminado anetiormente
             except KeyError:
-                print("Ocurrio un Error inexperado")
-                #raise UnknownError()
+                raise UnknownError()
         else:
             print("[!] Ya existe el archivo -> {}".format(carpeta+music.title + ".mp3"))
                 
@@ -450,7 +452,7 @@ def descargarPlaylistVideo(url, carpeta=".", res=None, messagebox=None):
                     if messagebox == None: print(informacion)
                     else:  Thread(target=messagebox.showinfo, args=("Exito", informacion), daemon=True).start()
                 except KeyError:
-                    print("Ocurrio un Error inexperado")
+                    pass
                     #raise UnknownError()
             else:
                 informacion = "[!] Ya existe el archivo -> {}".format(carpeta+descarga.title + ".mp3")

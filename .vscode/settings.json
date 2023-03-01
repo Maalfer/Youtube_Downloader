@@ -40,5 +40,7 @@
         "tree.c": "cpp",
         "other.c": "cpp",
         "wchar.h": "c"
-    }
+    },
+    "editor.tabCompletion": "on",
+    "diffEditor.codeLens": true
 }
